@@ -3,9 +3,14 @@ package com.backend.server.controller;
 import com.backend.server.model.Order;
 import com.backend.server.repository.MongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class OrderController {
@@ -19,10 +24,18 @@ public class OrderController {
     }
 
     @PostMapping("/addOrder")
-    public String addOrder(){
-        Order order = new Order("tb1","HandiCraft","Table top");
-        mongoRepository.save(order);
-        return "added";
+    public ResponseEntity<Map<String,String>> addOrder(@RequestBody Order order){
+        //Order order = new Order("tb1","HandiCraft","Table top");
+        Order o = mongoRepository.save(order);
+        Map<String,String> response = new HashMap<>();
+        if(o!=null){
+            response.put("status","200");
+            response.put("message","Added successfully");
+        } else{
+            response.put("status","404");
+            response.put("message","Not added order");
+        }
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PutMapping("/updateOrder")
