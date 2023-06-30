@@ -52,16 +52,24 @@ public class OrderController {
     }
 
     @PostMapping("/deleteOrder")
-    public String deleteOrder(@RequestBody Order order){
+    public ResponseEntity<Map<String,String>> deleteOrder(@RequestBody Order order){
         List<Order > orders = mongoRepository.findAll();
+        Map<String,String> response = new HashMap<>();
         if(orders != null || orders.size()!=0){
             for(Order o:orders){
                 if(o.getId().equals(order.getId())){
                     mongoRepository.delete(order);
+                    if(o!=null){
+                        response.put("status","200");
+                        response.put("message","Added successfully");
+                    } else{
+                        response.put("status","404");
+                        response.put("message","Not added order");
+                    }
                 }
             }
         }
-        return "deleted";
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
 }
