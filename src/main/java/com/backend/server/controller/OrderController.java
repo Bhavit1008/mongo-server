@@ -3,6 +3,7 @@ package com.backend.server.controller;
 import com.backend.server.model.Order;
 import com.backend.server.repository.MongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,10 @@ public class OrderController {
         //Order order = new Order("tb1","HandiCraft","Table top");
         Order o = mongoRepository.save(order);
         Map<String,String> response = new HashMap<>();
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin","*");
+        headers.set("Access-Control-Allow-Methods","POST, GET, PUT, UPDATE, OPTIONS");
+        headers.set("Access-Control-Allow-Headers","Content-Type, Accept, X-Requested-With");
         if(o!=null){
             response.put("status","200");
             response.put("message","Added successfully");
@@ -36,7 +41,7 @@ public class OrderController {
             response.put("status","404");
             response.put("message","Not added order");
         }
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        return new ResponseEntity<>(response, headers,HttpStatus.CREATED);
     }
 
     @PutMapping("/updateOrder")
