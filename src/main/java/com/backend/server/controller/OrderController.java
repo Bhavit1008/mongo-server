@@ -17,7 +17,7 @@ public class OrderController {
     @Autowired
     MongoRepository mongoRepository;
 
-    @GetMapping("test")
+    @GetMapping("/test")
     public List<Order> mytOrder(){
         List<Order> orders = mongoRepository.findAll();
         return orders;
