@@ -1,8 +1,0 @@
-F:\server\src\main\java\com\backend\server\controller\OrderController.java
-F:\server\src\main\java\com\backend\server\config\MongoDbSettings.java
-F:\server\src\main\java\com\backend\server\service\OrderServiceImpl.java
-F:\server\src\main\java\com\backend\server\repository\MongoRepository.java
-F:\server\src\main\java\com\backend\server\ServerApplication.java
-F:\server\src\main\java\com\backend\server\model\Order.java
-F:\server\src\main\java\com\backend\server\service\OrderService.java
-F:\server\src\main\java\com\backend\server\model\RunningOrder.java
