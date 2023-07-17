@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-//@CrossOrigin("http://localhost:4200")
+@CrossOrigin("https://setu-crm.web.app")
 public class OrderController {
     @Autowired
     MongoRepository mongoRepository;
@@ -30,10 +30,10 @@ public class OrderController {
         //Order order = new Order("tb1","HandiCraft","Table top");
         Order o = mongoRepository.save(order);
         Map<String,String> response = new HashMap<>();
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Access-Control-Allow-Origin","https://setu-crm.web.app");
-        headers.set("Access-Control-Allow-Methods","POST, GET, PUT, UPDATE, OPTIONS");
-        headers.set("Access-Control-Allow-Headers","Content-Type, Accept, X-Requested-With");
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.set("Access-Control-Allow-Origin","https://setu-crm.web.app");
+//        headers.set("Access-Control-Allow-Methods","POST, GET, PUT, UPDATE, OPTIONS");
+//        headers.set("Access-Control-Allow-Headers","Content-Type, Accept, X-Requested-With");
         if(o!=null){
             response.put("status","200");
             response.put("message","Added successfully");
@@ -41,7 +41,7 @@ public class OrderController {
             response.put("status","404");
             response.put("message","Not added order");
         }
-        return new ResponseEntity<>(response, headers,HttpStatus.CREATED);
+        return new ResponseEntity<>(response,HttpStatus.CREATED);
     }
 
     @PutMapping("/updateOrder")

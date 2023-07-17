@@ -32,30 +32,30 @@ public class ServerApplication {
 		SpringApplication.run(ServerApplication.class, args);
 	}
 
-	@Bean
-	public CorsConfigurationSource corsConfigurationSource() {
-		final CorsConfiguration configuration = new CorsConfiguration();
-		List<String> origins = new ArrayList<>();
-		origins.add("https://setu-crm.web.app");
-		configuration.setAllowedOrigins(origins);
-		List<String> methods = new ArrayList<>();
-		methods.add("GET");
-		methods.add("POST");
-		methods.add("PUT");
-		methods.add("DELETE");
-		configuration.setAllowedMethods(methods);
-		configuration.setAllowCredentials(true);
-		List<String> headers = new ArrayList<>();
-		headers.add("Authorization");
-		headers.add("Cache-Control");
-		headers.add("Content-Type");
-		configuration.setAllowedHeaders(headers);
-
-		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", configuration);
-
-		return source;
-	}
+//	@Bean
+//	public CorsConfigurationSource corsConfigurationSource() {
+//		final CorsConfiguration configuration = new CorsConfiguration();
+//		List<String> origins = new ArrayList<>();
+//		origins.add("https://setu-crm.web.app");
+//		configuration.setAllowedOrigins(origins);
+//		List<String> methods = new ArrayList<>();
+//		methods.add("GET");
+//		methods.add("POST");
+//		methods.add("PUT");
+//		methods.add("DELETE");
+//		configuration.setAllowedMethods(methods);
+//		configuration.setAllowCredentials(true);
+//		List<String> headers = new ArrayList<>();
+//		headers.add("Authorization");
+//		headers.add("Cache-Control");
+//		headers.add("Content-Type");
+//		configuration.setAllowedHeaders(headers);
+//
+//		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//		source.registerCorsConfiguration("/**", configuration);
+//
+//		return source;
+//	}
 
 //	@Bean
 //	public WebMvcConfigurer corsConfigurer() {
