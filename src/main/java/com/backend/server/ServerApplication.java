@@ -32,12 +32,11 @@ public class ServerApplication {
 		SpringApplication.run(ServerApplication.class, args);
 	}
 
-
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		final CorsConfiguration configuration = new CorsConfiguration();
 		List<String> origins = new ArrayList<>();
-		origins.add("*");
+		origins.add("https://setu-crm.onrender.com");
 		configuration.setAllowedOrigins(origins);
 		List<String> methods = new ArrayList<>();
 		methods.add("GET");
@@ -57,6 +56,19 @@ public class ServerApplication {
 
 		return source;
 	}
+
+//	@Bean
+//	public WebMvcConfigurer corsConfigurer() {
+//		return new WebMvcConfigurer () {
+//			@Override
+//			public void addCorsMappings(CorsRegistry registry) {
+//				registry.addMapping("/**")
+//						.allowedMethods("*").allowedOrigins("http://localhost:4200");
+//			}
+//		};
+//	}
+
+
 }
 
 
