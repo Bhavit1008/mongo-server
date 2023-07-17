@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin
+//@CrossOrigin("http://localhost:4200")
 public class OrderController {
     @Autowired
     MongoRepository mongoRepository;
@@ -31,7 +31,7 @@ public class OrderController {
         Order o = mongoRepository.save(order);
         Map<String,String> response = new HashMap<>();
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Access-Control-Allow-Origin","*");
+        headers.set("Access-Control-Allow-Origin","http://localhost:4200");
         headers.set("Access-Control-Allow-Methods","POST, GET, PUT, UPDATE, OPTIONS");
         headers.set("Access-Control-Allow-Headers","Content-Type, Accept, X-Requested-With");
         if(o!=null){
