@@ -36,7 +36,7 @@ public class ServerApplication {
 	public CorsConfigurationSource corsConfigurationSource() {
 		final CorsConfiguration configuration = new CorsConfiguration();
 		List<String> origins = new ArrayList<>();
-		origins.add("https://setu-crm.web.app/");
+		origins.add("https://setu-crm.web.app");
 		configuration.setAllowedOrigins(origins);
 		List<String> methods = new ArrayList<>();
 		methods.add("GET");
