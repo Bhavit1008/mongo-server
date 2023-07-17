@@ -4,5 +4,6 @@ com\backend\server\ServerApplication.class
 com\backend\server\model\Order.class
 com\backend\server\repository\MongoRepository.class
 com\backend\server\model\RunningOrder.class
+com\backend\server\config\WebConfig.class
 com\backend\server\controller\OrderController.class
 com\backend\server\service\OrderServiceImpl.class
