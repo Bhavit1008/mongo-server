@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin("https://setu-crm.web.app")
+@CrossOrigin(origins = "*")
 public class OrderController {
     @Autowired
     MongoRepository mongoRepository;

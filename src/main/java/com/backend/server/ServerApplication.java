@@ -27,8 +27,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
-@EnableScheduling
-@ComponentScan(basePackageClasses = Scheduler.class)
+//@EnableScheduling
+//@ComponentScan(basePackageClasses = Scheduler.class)
 public class ServerApplication {
 
 	public static void main(String[] args) {
@@ -66,12 +66,10 @@ public class ServerApplication {
 //			@Override
 //			public void addCorsMappings(CorsRegistry registry) {
 //				registry.addMapping("/**")
-//						.allowedMethods("*").allowedOrigins("http://localhost:4200");
+//						.allowedMethods("*").allowedOrigins("https://setu-crm.web.app");
 //			}
 //		};
 //	}
-
-
 }
 
 
