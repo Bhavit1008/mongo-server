@@ -19,7 +19,13 @@ public class Order {
 
     private String productDescription;
 
-    private String size;
+    private String unit;
+
+    private String length;
+
+    private String width;
+
+    private String height;
 
     private String quantity;
 
@@ -39,69 +45,28 @@ public class Order {
 
     private String secondaryManager;
 
+    private String developedQuantity;
+
     private String dispatchedQuantity;
 
     private String leftQuantity;
 
     private String status;
 
-    public String getDispatchedQuantity() {
-        return dispatchedQuantity;
-    }
-
-    public void setDispatchedQuantity(String dispatchedQuantity) {
-        this.dispatchedQuantity = dispatchedQuantity;
-    }
-
-    public String getLeftQuantity() {
-        return leftQuantity;
-    }
-
-    public void setLeftQuantity(String leftQuantity) {
-        this.leftQuantity = leftQuantity;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Order(String id, String productCategory, String partyName, String deliveryCity, String productCode, String productDescription, String size, String quantity, String quality, String polish, String shape, String deliveryDate, String color, String creationDate, String primaryManager, String secondaryManager, String dispatchedQuantity, String leftQuantity, String status) {
-        this.id = id;
-        this.productCategory = productCategory;
-        this.partyName = partyName;
-        this.deliveryCity = deliveryCity;
-        this.productCode = productCode;
-        this.productDescription = productDescription;
-        this.size = size;
-        this.quantity = quantity;
-        this.quality = quality;
-        this.polish = polish;
-        this.shape = shape;
-        this.deliveryDate = deliveryDate;
-        this.color = color;
-        this.creationDate = creationDate;
-        this.primaryManager = primaryManager;
-        this.secondaryManager = secondaryManager;
-        this.dispatchedQuantity = dispatchedQuantity;
-        this.leftQuantity = leftQuantity;
-        this.status = status;
-    }
-
     public Order() {
     }
 
-    public Order(String id, String productCategory, String partyName, String deliveryCity, String productCode, String productDescription, String size, String quantity, String quality, String polish, String shape, String deliveryDate, String color, String creationDate, String primaryManager, String secondaryManager) {
+    public Order(String id, String productCategory, String partyName, String deliveryCity, String productCode, String productDescription, String unit, String length, String width, String height, String quantity, String quality, String polish, String shape, String deliveryDate, String color, String creationDate, String primaryManager, String secondaryManager, String developedQuantity, String dispatchedQuantity, String leftQuantity, String status) {
         this.id = id;
         this.productCategory = productCategory;
         this.partyName = partyName;
         this.deliveryCity = deliveryCity;
         this.productCode = productCode;
         this.productDescription = productDescription;
-        this.size = size;
+        this.unit = unit;
+        this.length = length;
+        this.width = width;
+        this.height = height;
         this.quantity = quantity;
         this.quality = quality;
         this.polish = polish;
@@ -111,6 +76,10 @@ public class Order {
         this.creationDate = creationDate;
         this.primaryManager = primaryManager;
         this.secondaryManager = secondaryManager;
+        this.developedQuantity = developedQuantity;
+        this.dispatchedQuantity = dispatchedQuantity;
+        this.leftQuantity = leftQuantity;
+        this.status = status;
     }
 
     public String getId() {
@@ -161,12 +130,36 @@ public class Order {
         this.productDescription = productDescription;
     }
 
-    public String getSize() {
-        return size;
+    public String getUnit() {
+        return unit;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getLength() {
+        return length;
+    }
+
+    public void setLength(String length) {
+        this.length = length;
+    }
+
+    public String getWidth() {
+        return width;
+    }
+
+    public void setWidth(String width) {
+        this.width = width;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
     }
 
     public String getQuantity() {
@@ -239,5 +232,37 @@ public class Order {
 
     public void setSecondaryManager(String secondaryManager) {
         this.secondaryManager = secondaryManager;
+    }
+
+    public String getDevelopedQuantity() {
+        return developedQuantity;
+    }
+
+    public void setDevelopedQuantity(String developedQuantity) {
+        this.developedQuantity = developedQuantity;
+    }
+
+    public String getDispatchedQuantity() {
+        return dispatchedQuantity;
+    }
+
+    public void setDispatchedQuantity(String dispatchedQuantity) {
+        this.dispatchedQuantity = dispatchedQuantity;
+    }
+
+    public String getLeftQuantity() {
+        return leftQuantity;
+    }
+
+    public void setLeftQuantity(String leftQuantity) {
+        this.leftQuantity = leftQuantity;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

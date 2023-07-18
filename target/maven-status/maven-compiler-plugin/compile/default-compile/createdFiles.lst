@@ -1,5 +1,6 @@
 com\backend\server\service\OrderService.class
 com\backend\server\ServerApplication.class
+com\backend\server\config\Scheduler.class
 com\backend\server\model\Order.class
 com\backend\server\repository\MongoRepository.class
 com\backend\server\model\RunningOrder.class
