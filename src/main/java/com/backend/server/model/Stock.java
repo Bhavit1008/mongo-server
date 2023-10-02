@@ -15,11 +15,12 @@ public class Stock {
     private String productLocation;
     private String associatedManager;
     private String relatedParty;
+    private String productImage;
 
     public Stock() {
     }
 
-    public Stock(String id, String productCategory, String productCode, String companyAddress, String productQuantity, String dateOfStocking, String warehouse, String productLocation, String associatedManager, String relatedParty) {
+    public Stock(String id, String productCategory, String productCode, String companyAddress, String productQuantity, String dateOfStocking, String warehouse, String productLocation, String associatedManager, String relatedParty, String productImage) {
         this.id = id;
         this.productCategory = productCategory;
         this.productCode = productCode;
@@ -29,6 +30,7 @@ public class Stock {
         this.productLocation = productLocation;
         this.associatedManager = associatedManager;
         this.relatedParty = relatedParty;
+        this.productImage = productImage;
     }
 
     public String getId() {
@@ -101,5 +103,13 @@ public class Stock {
 
     public void setRelatedParty(String relatedParty) {
         this.relatedParty = relatedParty;
+    }
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
     }
 }
