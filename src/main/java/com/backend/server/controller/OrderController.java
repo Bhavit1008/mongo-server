@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,10 +18,27 @@ public class OrderController {
     @Autowired
     MongoRepository mongoRepository;
 
-    @GetMapping("/test")
-    public List<Order> mytOrder(){
+    @GetMapping("/test/{category}/{manager}")
+    public List<Order> mytOrder(@PathVariable String category, @PathVariable String manager){
         List<Order> orders = mongoRepository.findAll();
-        return orders;
+        List<Order> ordersByCategory = new ArrayList<>();
+        List<Order> ordersByManager = new ArrayList<>();
+        if(null!=orders && orders.size()>0){
+            for(int i=0;i<orders.size();i++){
+                if(orders.get(i).getProductCategory().equals(category)){
+                    ordersByCategory.add(orders.get(i));
+                }
+            }
+
+            if(ordersByCategory.size()>0){
+                for(int i=0;i<ordersByCategory.size();i++){
+                    if(ordersByCategory.get(i).getPrimaryManager().equals(manager)){
+                        ordersByManager.add(ordersByCategory.get(i));
+                    }
+                }
+            }
+        }
+        return ordersByManager;
     }
 
     @PostMapping("/addOrder")
