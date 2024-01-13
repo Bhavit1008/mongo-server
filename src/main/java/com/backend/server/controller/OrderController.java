@@ -41,6 +41,12 @@ public class OrderController {
         return ordersByManager;
     }
 
+    @GetMapping("/allOrders")
+    public List<Order> getAllOrders(){
+        List<Order> orders = mongoRepository.findAll();
+        return orders;
+    }
+
     @PostMapping("/addOrder")
     public ResponseEntity<Map<String,String>> addOrder(@RequestBody Order order){
         //Order order = new Order("tb1","HandiCraft","Table top");
