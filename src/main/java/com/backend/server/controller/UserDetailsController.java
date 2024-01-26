@@ -40,7 +40,7 @@ public class UserDetailsController {
 
 
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<Map<String,Object>> login(@RequestBody LoginDto loginDto){
         Map<String,Object> response = new HashMap<>();
         List<UserDetails> users = userDetailsRepository.findAll();
@@ -51,6 +51,7 @@ public class UserDetailsController {
                     response.put("status",200);
                     response.put("message","login successful");
                     response.put("role",users.get(i).getProductCategory());
+                    response.put("username", users.get(i).getFullName());
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }
             }
