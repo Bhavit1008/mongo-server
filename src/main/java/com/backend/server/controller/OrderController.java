@@ -18,11 +18,16 @@ public class OrderController {
     @Autowired
     MongoRepository mongoRepository;
 
-    @GetMapping("/test/{category}/{manager}")
-    public List<Order> mytOrder(@PathVariable String category, @PathVariable String manager){
+    @GetMapping("/test/{designation}/{category}/{manager}")
+    public List<Order> mytOrder(@PathVariable String designation,@PathVariable String category, @PathVariable String manager){
         List<Order> orders = mongoRepository.findAll();
         List<Order> ordersByCategory = new ArrayList<>();
         List<Order> ordersByManager = new ArrayList<>();
+
+        if(designation.equals("admin")){
+            return orders;
+        }
+
         if(null!=orders && orders.size()>0){
             for(int i=0;i<orders.size();i++){
                 if(orders.get(i).getProductCategory().equals(category)){

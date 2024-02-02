@@ -52,6 +52,7 @@ public class UserDetailsController {
                     response.put("message","login successful");
                     response.put("role",users.get(i).getProductCategory());
                     response.put("username", users.get(i).getFullName());
+                    response.put("designation", users.get(i).getDesignation());
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }
             }
