@@ -8,6 +8,14 @@ public class Stock {
     @Id
     private String id;
     private String productCategory;
+
+    private String product;
+
+    private String quality;
+
+    private String productDescription;
+
+    private String productPolish;
     private String productCode;
     private String productQuantity;
     private String dateOfStocking;
@@ -112,4 +120,37 @@ public class Stock {
     public void setProductImage(String productImage) {
         this.productImage = productImage;
     }
+
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    public String getQuality() {
+        return quality;
+    }
+
+    public void setQuality(String quality) {
+        this.quality = quality;
+    }
+
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
+
+    public String getProductPolish() {
+        return productPolish;
+    }
+
+    public void setProductPolish(String productPolish) {
+        this.productPolish = productPolish;
+    }
+
 }
