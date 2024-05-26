@@ -1,3 +1,4 @@
+com\backend\server\model\SlabDetails.class
 com\backend\server\model\LoginDto.class
 com\backend\server\controller\CompanyDetailsController.class
 com\backend\server\service\OrderService.class

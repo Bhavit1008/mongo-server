@@ -3,6 +3,8 @@ package com.backend.server.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document("Stock")
 public class Stock {
     @Id
@@ -23,6 +25,9 @@ public class Stock {
     private String productLocation;
     private String associatedManager;
     private String relatedParty;
+
+    private List<SlabDetails> slabDetails;
+
     private String productImage;
 
     public Stock() {
@@ -39,6 +44,32 @@ public class Stock {
         this.associatedManager = associatedManager;
         this.relatedParty = relatedParty;
         this.productImage = productImage;
+    }
+
+    public Stock(String id, String productCategory, String product, String quality, String productDescription, String productPolish, String productCode, String productQuantity, String dateOfStocking, String warehouse, String productLocation, String associatedManager, String relatedParty, List<SlabDetails> slabDetails, String productImage) {
+        this.id = id;
+        this.productCategory = productCategory;
+        this.product = product;
+        this.quality = quality;
+        this.productDescription = productDescription;
+        this.productPolish = productPolish;
+        this.productCode = productCode;
+        this.productQuantity = productQuantity;
+        this.dateOfStocking = dateOfStocking;
+        this.warehouse = warehouse;
+        this.productLocation = productLocation;
+        this.associatedManager = associatedManager;
+        this.relatedParty = relatedParty;
+        this.slabDetails = slabDetails;
+        this.productImage = productImage;
+    }
+
+    public List<SlabDetails> getSlabDetails() {
+        return slabDetails;
+    }
+
+    public void setSlabDetails(List<SlabDetails> slabDetails) {
+        this.slabDetails = slabDetails;
     }
 
     public String getId() {

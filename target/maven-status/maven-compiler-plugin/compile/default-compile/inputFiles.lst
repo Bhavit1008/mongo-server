@@ -6,6 +6,7 @@ F:\server\src\main\java\com\backend\server\repository\MongoRepository.java
 F:\server\src\main\java\com\backend\server\ServerApplication.java
 F:\server\src\main\java\com\backend\server\controller\CompanyDetailsController.java
 F:\server\src\main\java\com\backend\server\repository\CompanyRepository.java
+F:\server\src\main\java\com\backend\server\model\SlabDetails.java
 F:\server\src\main\java\com\backend\server\service\OrderService.java
 F:\server\src\main\java\com\backend\server\model\Stock.java
 F:\server\src\main\java\com\backend\server\repository\UserDetailsRepository.java
