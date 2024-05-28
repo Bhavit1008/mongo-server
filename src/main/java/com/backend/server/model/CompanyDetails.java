@@ -24,6 +24,12 @@ public class CompanyDetails {
 
     private String emailAddress;
 
+    private String managerName;
+
+    private String managerContactNumber;
+
+    private String managerEmailAddress;
+
     public CompanyDetails() {
     }
 
@@ -37,6 +43,45 @@ public class CompanyDetails {
         this.gstNumber = gstNumber;
         this.contactNumber = contactNumber;
         this.emailAddress = emailAddress;
+    }
+
+    public CompanyDetails(String id, String companyName, String companyOwnerName, String companyAddress, String state, String zipCode, String gstNumber, String contactNumber, String emailAddress, String managerName, String managerContactNumber, String managerEmailAddress) {
+        this.id = id;
+        this.companyName = companyName;
+        this.companyOwnerName = companyOwnerName;
+        this.companyAddress = companyAddress;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.gstNumber = gstNumber;
+        this.contactNumber = contactNumber;
+        this.emailAddress = emailAddress;
+        this.managerName = managerName;
+        this.managerContactNumber = managerContactNumber;
+        this.managerEmailAddress = managerEmailAddress;
+    }
+
+    public String getManagerName() {
+        return managerName;
+    }
+
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
+    }
+
+    public String getManagerContactNumber() {
+        return managerContactNumber;
+    }
+
+    public void setManagerContactNumber(String managerContactNumber) {
+        this.managerContactNumber = managerContactNumber;
+    }
+
+    public String getManagerEmailAddress() {
+        return managerEmailAddress;
+    }
+
+    public void setManagerEmailAddress(String managerEmailAddress) {
+        this.managerEmailAddress = managerEmailAddress;
     }
 
     public String getId() {
