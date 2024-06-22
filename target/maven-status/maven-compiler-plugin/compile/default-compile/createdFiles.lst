@@ -7,6 +7,7 @@ com\backend\server\config\Scheduler.class
 com\backend\server\model\Order.class
 com\backend\server\repository\CompanyRepository.class
 com\backend\server\repository\UserDetailsRepository.class
+com\backend\server\model\StockRequestBody.class
 com\backend\server\controller\StockController.class
 com\backend\server\model\CompanyDetails.class
 com\backend\server\controller\UserDetailsController.class

@@ -2,15 +2,17 @@ package com.backend.server.controller;
 
 import com.backend.server.model.CompanyDetails;
 import com.backend.server.model.Stock;
+import com.backend.server.model.StockRequestBody;
 import com.backend.server.repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.PriorityOrdered;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -42,9 +44,35 @@ public class StockController {
      * get all the companies details.
      *
      * */
-    @GetMapping("/getStock")
-    public List<Stock> mytOrder(){
+    @PostMapping("/getStock")
+    public List<Stock> mytOrder(@RequestBody StockRequestBody request){
         List<Stock> stocks = stockRepository.findAll();
-        return stocks;
+        List<Stock> filteredStocks = new ArrayList<>();
+        if(request.getCategory().equals("Get All Stock")){
+            return stocks;
+        }
+
+        if(request.getCategory()!=null){
+            for(int i=0;i<stocks.size();i++){
+                if(stocks.get(i).getProductCategory().equals(request.getCategory())){
+                    filteredStocks.add(stocks.get(i));
+                }
+            }
+        }
+        if(request.getStartDate()!=null && request.getStartDate()!=""){
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
+            LocalDate startDate = LocalDate.parse(request.getStartDate(), formatter);
+            LocalDate endDate = LocalDate.parse(request.getEndDate(), formatter);
+            List<Stock> dateFiltered = new ArrayList<>();
+            for(int i=0;i<filteredStocks.size();i++){
+                LocalDate productDate = LocalDate.parse(filteredStocks.get(i).getDateOfStocking(), formatter);
+                if(!(productDate.isBefore(startDate)) && (productDate.isBefore(endDate)) || productDate.isEqual(endDate)){
+                    dateFiltered.add(stocks.get(i));
+                }
+            }
+            filteredStocks = dateFiltered;
+        }
+
+        return filteredStocks;
     }
 }
