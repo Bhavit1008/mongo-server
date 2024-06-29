@@ -22,10 +22,11 @@ public class Stock {
     private String productQuantity;
     private String dateOfStocking;
     private String warehouse;
-    private String productLocation;
+    private String productRate;
     private String associatedManager;
     private String relatedParty;
 
+    private String color;
     private List<SlabDetails> slabDetails;
 
     private String productImage;
@@ -33,20 +34,7 @@ public class Stock {
     public Stock() {
     }
 
-    public Stock(String id, String productCategory, String productCode, String companyAddress, String productQuantity, String dateOfStocking, String warehouse, String productLocation, String associatedManager, String relatedParty, String productImage) {
-        this.id = id;
-        this.productCategory = productCategory;
-        this.productCode = productCode;
-        this.productQuantity = productQuantity;
-        this.dateOfStocking = dateOfStocking;
-        this.warehouse = warehouse;
-        this.productLocation = productLocation;
-        this.associatedManager = associatedManager;
-        this.relatedParty = relatedParty;
-        this.productImage = productImage;
-    }
-
-    public Stock(String id, String productCategory, String product, String quality, String productDescription, String productPolish, String productCode, String productQuantity, String dateOfStocking, String warehouse, String productLocation, String associatedManager, String relatedParty, List<SlabDetails> slabDetails, String productImage) {
+    public Stock(String id, String productCategory, String product, String quality, String productDescription, String productPolish, String productCode, String productQuantity, String dateOfStocking, String warehouse, String productRate, String associatedManager, String relatedParty, String color, List<SlabDetails> slabDetails, String productImage) {
         this.id = id;
         this.productCategory = productCategory;
         this.product = product;
@@ -57,9 +45,10 @@ public class Stock {
         this.productQuantity = productQuantity;
         this.dateOfStocking = dateOfStocking;
         this.warehouse = warehouse;
-        this.productLocation = productLocation;
+        this.productRate = productRate;
         this.associatedManager = associatedManager;
         this.relatedParty = relatedParty;
+        this.color = color;
         this.slabDetails = slabDetails;
         this.productImage = productImage;
     }
@@ -120,12 +109,12 @@ public class Stock {
         this.warehouse = warehouse;
     }
 
-    public String getProductLocation() {
-        return productLocation;
+    public String getProductRate() {
+        return productRate;
     }
 
-    public void setProductLocation(String productLocation) {
-        this.productLocation = productLocation;
+    public void setProductRate(String productRate) {
+        this.productRate = productRate;
     }
 
     public String getAssociatedManager() {
@@ -184,4 +173,11 @@ public class Stock {
         this.productPolish = productPolish;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 }
