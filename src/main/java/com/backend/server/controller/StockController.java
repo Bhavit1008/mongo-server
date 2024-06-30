@@ -49,6 +49,11 @@ public class StockController {
         List<Stock> stocks = stockRepository.findAll();
         List<Stock> filteredStock = new ArrayList<>();
 
+        //All stock
+        if(request.getCategory().equals("Get All Stock")){
+            return stocks;
+        }
+
         //only category
         if (!request.getCategory().equals("") && request.getColor().equals("")
         && request.getPrice().equals("")) {
