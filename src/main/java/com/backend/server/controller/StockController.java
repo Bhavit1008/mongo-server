@@ -47,11 +47,12 @@ public class StockController {
     @PostMapping("/getStock")
     public List<Stock> mytOrder(@RequestBody StockRequestBody request) {
         List<Stock> stocks = stockRepository.findAll();
-        List<Stock> filteredStocks = new ArrayList<>();
-
         List<Stock> filteredStock = new ArrayList<>();
 
-        if (!request.getCategory().equals("") && request.getColor().equals("")) {
+        //only category
+        if (!request.getCategory().equals("") && request.getColor().equals("")
+        && request.getPrice().equals("")) {
+            filteredStock = new ArrayList<>();
             for (int i = 0; i < stocks.size(); i++) {
                 if (request.getCategory().equals(stocks.get(i).getProductCategory())) {
                     filteredStock.add(stocks.get(i));
@@ -59,7 +60,10 @@ public class StockController {
             }
         }
 
-        if (request.getCategory().equals("") && !request.getColor().equals("")) {
+        //only color
+        if (request.getCategory().equals("") && !request.getColor().equals("")
+        && request.getPrice().equals("")) {
+            filteredStock = new ArrayList<>();
             for (int i = 0; i < stocks.size(); i++) {
                 if (request.getColor().equals(stocks.get(i).getColor())) {
                     filteredStock.add(stocks.get(i));
@@ -67,7 +71,25 @@ public class StockController {
             }
         }
 
-        if (!request.getCategory().equals("") && !request.getColor().equals("")) {
+        //only price
+        if (request.getCategory().equals("") && request.getColor().equals("")
+        && !request.getPrice().equals("")) {
+            filteredStock = new ArrayList<>();
+
+            String[] priceRange = request.getPrice().split("-");
+            for(int i=0;i<stocks.size();i++){
+                if(Integer.parseInt(priceRange[0])<=Integer.parseInt(stocks.get(i).getProductRate())
+                && Integer.parseInt(priceRange[1])>=Integer.parseInt(stocks.get(i).getProductRate())){
+                    filteredStock.add(stocks.get(i));
+                }
+            }
+        }
+
+        //category and color
+        if (!request.getCategory().equals("") && !request.getColor().equals("")
+        && request.getPrice().equals("")) {
+            filteredStock = new ArrayList<>();
+
             for (int i = 0; i < stocks.size(); i++) {
                 if (request.getColor().equals(stocks.get(i).getColor()) &&
                         request.getCategory().equals(stocks.get(i).getProductCategory())) {
@@ -76,8 +98,72 @@ public class StockController {
             }
         }
 
+        //color and price
+        if (request.getCategory().equals("") && !request.getColor().equals("")
+                && !request.getPrice().equals("")) {
+            filteredStock = new ArrayList<>();
+            List<Stock> temp = new ArrayList<>();
 
-        if (filteredStocks != null) {
+            for (int i = 0; i < stocks.size(); i++) {
+                if (request.getColor().equals(stocks.get(i).getColor())) {
+                    temp.add(stocks.get(i));
+                }
+            }
+
+            String[] priceRange = request.getPrice().split("-");
+            for(int i=0;i<temp.size();i++){
+                if(Integer.parseInt(priceRange[0])<=Integer.parseInt(stocks.get(i).getProductRate())
+                        && Integer.parseInt(priceRange[1])>=Integer.parseInt(stocks.get(i).getProductRate())){
+                    filteredStock.add(stocks.get(i));
+                }
+            }
+        }
+
+        //category and price
+        if (!request.getCategory().equals("") && request.getColor().equals("")
+                && !request.getPrice().equals("")) {
+            filteredStock = new ArrayList<>();
+            List<Stock> temp = new ArrayList<>();
+
+            for (int i = 0; i < stocks.size(); i++) {
+                if (request.getCategory().equals(stocks.get(i).getProductCategory())) {
+                    temp.add(stocks.get(i));
+                }
+            }
+
+            String[] priceRange = request.getPrice().split("-");
+            for(int i=0;i<temp.size();i++){
+                if(Integer.parseInt(priceRange[0])<=Integer.parseInt(stocks.get(i).getProductRate())
+                        && Integer.parseInt(priceRange[1])>=Integer.parseInt(stocks.get(i).getProductRate())){
+                    filteredStock.add(stocks.get(i));
+                }
+            }
+        }
+
+        //category color and price
+        if (!request.getCategory().equals("") && !request.getColor().equals("") &&
+                !request.getPrice().equals("")) {
+            filteredStock = new ArrayList<>();
+            List<Stock> temp = new ArrayList<>();
+            for (int i = 0; i < stocks.size(); i++) {
+                if (request.getColor().equals(stocks.get(i).getColor()) &&
+                        request.getCategory().equals(stocks.get(i).getProductCategory())) {
+                    temp.add(stocks.get(i));
+                }
+            }
+
+            String[] priceRange = request.getPrice().split("-");
+            for(int i=0;i<temp.size();i++){
+                if(Integer.parseInt(priceRange[0])<=Integer.parseInt(stocks.get(i).getProductRate())
+                        && Integer.parseInt(priceRange[1])>=Integer.parseInt(stocks.get(i).getProductRate())){
+                    filteredStock.add(stocks.get(i));
+                }
+            }
+
+        }
+
+
+        if (filteredStock != null) {
             return filteredStock;
         } else {
             return null;
