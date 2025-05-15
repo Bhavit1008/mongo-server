@@ -1,3 +1,5 @@
+F:\server\src\main\java\com\backend\server\repository\BlockRepository.java
+F:\server\src\main\java\com\backend\server\model\Block.java
 F:\server\src\main\java\com\backend\server\model\LoginDto.java
 F:\server\src\main\java\com\backend\server\repository\StockRepository.java
 F:\server\src\main\java\com\backend\server\controller\UserDetailsController.java
@@ -12,6 +14,7 @@ F:\server\src\main\java\com\backend\server\model\Stock.java
 F:\server\src\main\java\com\backend\server\repository\UserDetailsRepository.java
 F:\server\src\main\java\com\backend\server\controller\OrderController.java
 F:\server\src\main\java\com\backend\server\config\MongoDbSettings.java
+F:\server\src\main\java\com\backend\server\controller\BlockController.java
 F:\server\src\main\java\com\backend\server\service\OrderServiceImpl.java
 F:\server\src\main\java\com\backend\server\model\CompanyDetails.java
 F:\server\src\main\java\com\backend\server\model\Order.java
