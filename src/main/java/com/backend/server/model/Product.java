@@ -10,14 +10,14 @@ public class Product {
     private String id;
 	private String category;
     private String productCode;
-    private String location;
+    private String godownLocation;
     private String productQuality;
     private String productFinished;
-    private float length;
-    private float height;
-    private float thickness;
-    private float width;
-    private float weight;
+    private float productLength;
+    private float productHeight;
+    private float productThickness;
+    private float productWidth;
+    private float productWeight;
     private int numberOfPeice;
     private int quantity;
     
@@ -34,18 +34,18 @@ public class Product {
 	public Product() {
 	}
 
-	public Product(String id, String category, String productCode, String location, String productQuality, String productFinished, float length, float height, float thickness, float width, float weight, int numberOfPeice, int quantity, double exFactoryCost, double freightCost, double miscellaneousCost, double inHouseCost, double sellingCost, double royaltyCost, String status, String remarks) {
+	public Product(String id, String category, String productCode, String godownLocation, String productQuality, String productFinished, float productLength, float productHeight, float productThickness, float productWidth, float weight, int numberOfPeice, int quantity, double exFactoryCost, double freightCost, double miscellaneousCost, double inHouseCost, double sellingCost, double royaltyCost, String status, String remarks) {
 		this.id = id;
 		this.category = category;
 		this.productCode = productCode;
-		this.location = location;
+		this.godownLocation = godownLocation;
 		this.productQuality = productQuality;
 		this.productFinished = productFinished;
-		this.length = length;
-		this.height = height;
-		this.thickness = thickness;
-		this.width = width;
-		this.weight = weight;
+		this.productLength = productLength;
+		this.productHeight = productHeight;
+		this.productThickness = productThickness;
+		this.productWidth = productWidth;
+		this.productWeight = weight;
 		this.numberOfPeice = numberOfPeice;
 		this.quantity = quantity;
 		this.exFactoryCost = exFactoryCost;
@@ -70,11 +70,11 @@ public class Product {
 	public void setProductCode(String productCode) {
 		this.productCode = productCode;
 	}
-	public String getLocation() {
-		return location;
+	public String getGodownLocation() {
+		return godownLocation;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setGodownLocation(String godownLocation) {
+		this.godownLocation = godownLocation;
 	}
 	public String getProductQuality() {
 		return productQuality;
@@ -88,35 +88,35 @@ public class Product {
 	public void setProductFinished(String productFinished) {
 		this.productFinished = productFinished;
 	}
-	public float getLength() {
-		return length;
+	public float getProductLength() {
+		return productLength;
 	}
-	public void setLength(float length) {
-		this.length = length;
+	public void setProductLength(float productLength) {
+		this.productLength = productLength;
 	}
-	public float getHeight() {
-		return height;
+	public float getProductHeight() {
+		return productHeight;
 	}
-	public void setHeight(float height) {
-		this.height = height;
+	public void setProductHeight(float productHeight) {
+		this.productHeight = productHeight;
 	}
-	public float getThickness() {
-		return thickness;
+	public float getProductThickness() {
+		return productThickness;
 	}
-	public void setThickness(float thickness) {
-		this.thickness = thickness;
+	public void setProductThickness(float productThickness) {
+		this.productThickness = productThickness;
 	}
-	public float getWidth() {
-		return width;
+	public float getProductWidth() {
+		return productWidth;
 	}
-	public void setWidth(float width) {
-		this.width = width;
+	public void setProductWidth(float productWidth) {
+		this.productWidth = productWidth;
 	}
-	public float getWeight() {
-		return weight;
+	public float getProductWeight() {
+		return productWeight;
 	}
-	public void setWeight(float weight) {
-		this.weight = weight;
+	public void setProductWeight(float productWeight) {
+		this.productWeight = productWeight;
 	}
 	public int getNumberOfPeice() {
 		return numberOfPeice;
