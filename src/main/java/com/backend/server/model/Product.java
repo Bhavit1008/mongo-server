@@ -30,7 +30,34 @@ public class Product {
     
     private String status;
     private String remarks;
-    
+
+	public Product() {
+	}
+
+	public Product(String id, String category, String productCode, String location, String productQuality, String productFinished, float length, float height, float thickness, float width, float weight, int numberOfPeice, int quantity, double exFactoryCost, double freightCost, double miscellaneousCost, double inHouseCost, double sellingCost, double royaltyCost, String status, String remarks) {
+		this.id = id;
+		this.category = category;
+		this.productCode = productCode;
+		this.location = location;
+		this.productQuality = productQuality;
+		this.productFinished = productFinished;
+		this.length = length;
+		this.height = height;
+		this.thickness = thickness;
+		this.width = width;
+		this.weight = weight;
+		this.numberOfPeice = numberOfPeice;
+		this.quantity = quantity;
+		this.exFactoryCost = exFactoryCost;
+		this.freightCost = freightCost;
+		this.miscellaneousCost = miscellaneousCost;
+		this.inHouseCost = inHouseCost;
+		this.sellingCost = sellingCost;
+		this.royaltyCost = royaltyCost;
+		this.status = status;
+		this.remarks = remarks;
+	}
+
 	public String getId() {
 		return id;
 	}
