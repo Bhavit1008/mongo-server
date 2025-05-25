@@ -1,5 +1,7 @@
 package com.backend.server.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -29,12 +31,18 @@ public class Product {
     private double royaltyCost;
     
     private String status;
-    private String remarks;
+    private String description;
+    
+    private List<SlabPieces> pieces;
 
 	public Product() {
 	}
 
-	public Product(String id, String category, String productCode, String godownLocation, String productQuality, String productFinished, float productLength, float productHeight, float productThickness, float productWidth, float weight, int numberOfPeice, int quantity, double exFactoryCost, double freightCost, double miscellaneousCost, double inHouseCost, double sellingCost, double royaltyCost, String status, String remarks) {
+	public Product(String id, String category, String productCode, String godownLocation, String productQuality, 
+			String productFinished, float productLength, float productHeight, float productThickness, 
+			float productWidth, float weight, int numberOfPeice, int quantity, double exFactoryCost, 
+			double freightCost, double miscellaneousCost, double inHouseCost, double sellingCost, double royaltyCost, 
+			String status, String description , List pieces) {
 		this.id = id;
 		this.category = category;
 		this.productCode = productCode;
@@ -55,7 +63,8 @@ public class Product {
 		this.sellingCost = sellingCost;
 		this.royaltyCost = royaltyCost;
 		this.status = status;
-		this.remarks = remarks;
+		this.description = description;
+		this.setPieces(pieces);
 	}
 
 	public String getId() {
@@ -172,17 +181,25 @@ public class Product {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getRemarks() {
-		return remarks;
+	public String getDescription() {
+		return description;
 	}
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getCategory() {
 		return category;
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public List<SlabPieces> getPieces() {
+		return pieces;
+	}
+
+	public void setPieces(List<SlabPieces> pieces) {
+		this.pieces = pieces;
 	} 
 	
 }
