@@ -33,6 +33,8 @@ public class Product {
     private String status;
     private String description;
     
+    private String imageUrl;
+    
     private List<SlabPieces> pieces;
 
 	public Product() {
@@ -200,6 +202,14 @@ public class Product {
 
 	public void setPieces(List<SlabPieces> pieces) {
 		this.pieces = pieces;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	} 
 	
 }

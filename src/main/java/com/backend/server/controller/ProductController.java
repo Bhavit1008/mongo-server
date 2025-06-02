@@ -1,23 +1,32 @@
 package com.backend.server.controller;
 
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.backend.server.model.Block;
 import com.backend.server.model.Product;
-import com.backend.server.repository.BlockRepository;
 import com.backend.server.repository.ProductRepository;
+import com.backend.server.service.CloudinaryService;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -25,20 +34,14 @@ public class ProductController {
 
 	@Autowired
     ProductRepository productRepository;
+	
+	@Autowired
+	private CloudinaryService cloudinaryService;
 
     @PostMapping("/addProduct")
-    public ResponseEntity<Map<String,String>> addOrder(@RequestBody Product product){
-        //Order order = new Order("tb1","HandiCraft","Table top");
-        Product block = productRepository.save(product);
-        Map<String,String> response = new HashMap<>();
-        if(block !=null){
-            response.put("status","200");
-            response.put("message","Stock added successfully");
-        } else{
-            response.put("status","404");
-            response.put("message","Error in storing stock");
-        }
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    public ResponseEntity<?> addOrder(@RequestBody Product product){
+        Product savedProduct = productRepository.save(product);
+        return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
 
     @GetMapping ("/getAllProducts")
@@ -47,6 +50,11 @@ public class ProductController {
         return products;
     }
     
+    @PostMapping("/upload-image")
+    public ResponseEntity<String> uploadImage(@RequestParam("image") MultipartFile file) {
+        String imageUrl = cloudinaryService.uploadImage(file);
+        return ResponseEntity.ok(imageUrl);
+    }
     
     //internal use only
     @DeleteMapping ("/deleteAllProducts")
