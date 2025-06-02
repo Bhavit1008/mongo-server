@@ -7,6 +7,7 @@ com\backend\server\repository\UserDetailsRepository.class
 com\backend\server\controller\UserDetailsController.class
 com\backend\server\model\RunningOrder.class
 com\backend\server\model\UserDetails.class
+com\backend\server\config\CloudinaryConfig.class
 com\backend\server\repository\BlockRepository.class
 com\backend\server\repository\StockRepository.class
 com\backend\server\service\OrderServiceImpl.class
@@ -23,5 +24,6 @@ com\backend\server\controller\StockController.class
 com\backend\server\model\CompanyDetails.class
 com\backend\server\model\Stock.class
 com\backend\server\repository\MongoRepository.class
+com\backend\server\service\CloudinaryService.class
 com\backend\server\model\Block.class
 com\backend\server\controller\OrderController.class
