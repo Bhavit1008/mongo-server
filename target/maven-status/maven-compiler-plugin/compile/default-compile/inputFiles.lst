@@ -14,8 +14,10 @@ D:\Projects\SetuBackend\mongo-server\src\main\java\com\backend\server\model\Prod
 D:\Projects\SetuBackend\mongo-server\src\main\java\com\backend\server\model\UserDetails.java
 D:\Projects\SetuBackend\mongo-server\src\main\java\com\backend\server\repository\BlockRepository.java
 D:\Projects\SetuBackend\mongo-server\src\main\java\com\backend\server\model\LoginDto.java
+D:\Projects\SetuBackend\mongo-server\src\main\java\com\backend\server\config\CloudinaryConfig.java
 D:\Projects\SetuBackend\mongo-server\src\main\java\com\backend\server\model\RunningOrder.java
 D:\Projects\SetuBackend\mongo-server\src\main\java\com\backend\server\controller\OrderController.java
+D:\Projects\SetuBackend\mongo-server\src\main\java\com\backend\server\service\CloudinaryService.java
 D:\Projects\SetuBackend\mongo-server\src\main\java\com\backend\server\service\OrderService.java
 D:\Projects\SetuBackend\mongo-server\src\main\java\com\backend\server\ServerApplication.java
 D:\Projects\SetuBackend\mongo-server\src\main\java\com\backend\server\model\SlabDetails.java
