@@ -2,8 +2,10 @@ com\backend\server\service\OrderService.class
 com\backend\server\controller\ProductController.class
 com\backend\server\model\Product.class
 com\backend\server\ServerApplication.class
+com\backend\server\repository\IntransitRepository.class
 com\backend\server\config\Scheduler.class
 com\backend\server\repository\UserDetailsRepository.class
+com\backend\server\model\Intrasit.class
 com\backend\server\controller\UserDetailsController.class
 com\backend\server\model\RunningOrder.class
 com\backend\server\model\UserDetails.class

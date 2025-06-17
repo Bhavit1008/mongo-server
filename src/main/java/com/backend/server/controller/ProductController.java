@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.backend.server.model.Intrasit;
+import com.backend.server.repository.IntransitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.ContentDisposition;
@@ -34,9 +36,19 @@ public class ProductController {
 
 	@Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    IntransitRepository intransitRepository;
 	
 	@Autowired
 	private CloudinaryService cloudinaryService;
+
+
+    @PostMapping("/addTransit")
+    public ResponseEntity<?> addIntransit(@RequestBody Intrasit intrasit){
+        Intrasit intrasitObj = intransitRepository.save(intrasit);
+        return new ResponseEntity<>(intrasitObj, HttpStatus.CREATED);
+    }
 
     @PostMapping("/addProduct")
     public ResponseEntity<?> addOrder(@RequestBody Product product){

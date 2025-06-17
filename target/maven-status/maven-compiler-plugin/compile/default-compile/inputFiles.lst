@@ -5,6 +5,7 @@ F:\server\src\main\java\com\backend\server\model\LoginDto.java
 F:\server\src\main\java\com\backend\server\repository\StockRepository.java
 F:\server\src\main\java\com\backend\server\controller\UserDetailsController.java
 F:\server\src\main\java\com\backend\server\ServerApplication.java
+F:\server\src\main\java\com\backend\server\model\Intrasit.java
 F:\server\src\main\java\com\backend\server\service\OrderService.java
 F:\server\src\main\java\com\backend\server\config\MongoDbSettings.java
 F:\server\src\main\java\com\backend\server\controller\BlockController.java
@@ -26,5 +27,6 @@ F:\server\src\main\java\com\backend\server\service\OrderServiceImpl.java
 F:\server\src\main\java\com\backend\server\model\Product.java
 F:\server\src\main\java\com\backend\server\config\Scheduler.java
 F:\server\src\main\java\com\backend\server\controller\StockController.java
+F:\server\src\main\java\com\backend\server\repository\IntransitRepository.java
 F:\server\src\main\java\com\backend\server\model\StockRequestBody.java
 F:\server\src\main\java\com\backend\server\model\RunningOrder.java
