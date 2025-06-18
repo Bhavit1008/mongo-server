@@ -50,6 +50,18 @@ public class ProductController {
         return new ResponseEntity<>(intrasitObj, HttpStatus.CREATED);
     }
 
+    @PostMapping("/getIntansit")
+    public ResponseEntity<?> getIntransit(@RequestBody Product product){
+        List<Intrasit> intrasitObj = intransitRepository.findAll();
+        Intrasit intrasit = null;
+        for(int i=0;i<intrasitObj.size();i++){
+            if(product.getId().equalsIgnoreCase(intrasitObj.get(i).getProductId())){
+                intrasit = intrasitObj.get(i);
+            }
+        }
+        return new ResponseEntity<>(intrasit, HttpStatus.CREATED);
+    }
+
     @PostMapping("/addProduct")
     public ResponseEntity<?> addOrder(@RequestBody Product product){
         Product savedProduct = productRepository.save(product);
