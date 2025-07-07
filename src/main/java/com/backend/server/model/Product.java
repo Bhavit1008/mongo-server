@@ -37,6 +37,8 @@ public class Product {
     
     private List<SlabPieces> pieces;
 
+	private double totalArea;
+
 	public Product() {
 	}
 
@@ -44,7 +46,7 @@ public class Product {
 			String productFinished, float productLength, float productHeight, float productThickness, 
 			float productWidth, float weight, int numberOfPeice, int quantity, double exFactoryCost, 
 			double freightCost, double miscellaneousCost, double inHouseCost, double sellingCost, double royaltyCost, 
-			String status, String description , List pieces) {
+			String status, String description , List pieces, double totalArea) {
 		this.id = id;
 		this.category = category;
 		this.productCode = productCode;
@@ -67,6 +69,7 @@ public class Product {
 		this.status = status;
 		this.description = description;
 		this.setPieces(pieces);
+		this.totalArea = totalArea;
 	}
 
 	public String getId() {
@@ -210,6 +213,13 @@ public class Product {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
-	} 
-	
+	}
+
+	public double getTotalArea() {
+		return totalArea;
+	}
+
+	public void setTotalArea(double totalArea) {
+		this.totalArea = totalArea;
+	}
 }
