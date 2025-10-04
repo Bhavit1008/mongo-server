@@ -5,6 +5,7 @@ import com.backend.server.repository.BlockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "*")
+@PreAuthorize("hasRole('EDITOR')")
 public class BlockController {
 
     @Autowired
@@ -33,6 +35,7 @@ public class BlockController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasAnyRole('VIEWER', 'EDITOR')")
     @GetMapping ("/getBlocks")
     public List<Block> getBlocks(){
         List<Block> blocks = blockRepository.findAll();
