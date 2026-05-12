@@ -39,6 +39,13 @@ public class Product {
 
 	private double totalArea;
 
+	private double rate;
+	private double rateQty;
+
+	private double royaltyQty;
+
+	private double freightQty;
+
 	public Product() {
 	}
 
@@ -70,6 +77,69 @@ public class Product {
 		this.description = description;
 		this.setPieces(pieces);
 		this.totalArea = totalArea;
+	}
+
+	public Product(String id, String category, String productCode, String godownLocation, String productQuality, String productFinished, float productLength, float productHeight, float productThickness, float productWidth, float productWeight, int numberOfPeice, int quantity, double exFactoryCost, double freightCost, double miscellaneousCost, double inHouseCost, double sellingCost, double royaltyCost, String status, String description, String imageUrl, List<SlabPieces> pieces, double totalArea, double rate, double rateQty, double royaltyQty, double freightQty) {
+		this.id = id;
+		this.category = category;
+		this.productCode = productCode;
+		this.godownLocation = godownLocation;
+		this.productQuality = productQuality;
+		this.productFinished = productFinished;
+		this.productLength = productLength;
+		this.productHeight = productHeight;
+		this.productThickness = productThickness;
+		this.productWidth = productWidth;
+		this.productWeight = productWeight;
+		this.numberOfPeice = numberOfPeice;
+		this.quantity = quantity;
+		this.exFactoryCost = exFactoryCost;
+		this.freightCost = freightCost;
+		this.miscellaneousCost = miscellaneousCost;
+		this.inHouseCost = inHouseCost;
+		this.sellingCost = sellingCost;
+		this.royaltyCost = royaltyCost;
+		this.status = status;
+		this.description = description;
+		this.imageUrl = imageUrl;
+		this.pieces = pieces;
+		this.totalArea = totalArea;
+		this.rate = rate;
+		this.rateQty = rateQty;
+		this.royaltyQty = royaltyQty;
+		this.freightQty = freightQty;
+	}
+
+	public double getRate() {
+		return rate;
+	}
+
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+
+	public double getRateQty() {
+		return rateQty;
+	}
+
+	public void setRateQty(double rateQty) {
+		this.rateQty = rateQty;
+	}
+
+	public double getRoyaltyQty() {
+		return royaltyQty;
+	}
+
+	public void setRoyaltyQty(double royaltyQty) {
+		this.royaltyQty = royaltyQty;
+	}
+
+	public double getFreightQty() {
+		return freightQty;
+	}
+
+	public void setFreightQty(double freightQty) {
+		this.freightQty = freightQty;
 	}
 
 	public String getId() {
