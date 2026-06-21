@@ -13,6 +13,7 @@ com\backend\server\config\CloudinaryConfig.class
 com\backend\server\repository\BlockRepository.class
 com\backend\server\repository\StockRepository.class
 com\backend\server\service\OrderServiceImpl.class
+com\backend\server\service\ProductService.class
 com\backend\server\model\SlabDetails.class
 com\backend\server\model\LoginDto.class
 com\backend\server\controller\CompanyDetailsController.class
