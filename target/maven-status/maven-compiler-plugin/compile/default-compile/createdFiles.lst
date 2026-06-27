@@ -1,3 +1,4 @@
+com\backend\server\repository\PushSubscriptionRepository.class
 com\backend\server\service\OrderService.class
 com\backend\server\controller\ProductController.class
 com\backend\server\model\Product.class
@@ -7,6 +8,7 @@ com\backend\server\config\Scheduler.class
 com\backend\server\repository\ApprovalRequestRepository.class
 com\backend\server\repository\UserDetailsRepository.class
 com\backend\server\model\Intrasit.class
+com\backend\server\service\PushNotificationService.class
 com\backend\server\controller\UserDetailsController.class
 com\backend\server\model\RunningOrder.class
 com\backend\server\model\UserDetails.class
@@ -22,7 +24,9 @@ com\backend\server\model\LoginDto.class
 com\backend\server\controller\CompanyDetailsController.class
 com\backend\server\repository\ProductRepository.class
 com\backend\server\controller\BlockController.class
+com\backend\server\model\PushSubscription.class
 com\backend\server\model\Order.class
+com\backend\server\controller\PushController.class
 com\backend\server\repository\CompanyRepository.class
 com\backend\server\model\SlabPieces.class
 com\backend\server\model\StockRequestBody.class

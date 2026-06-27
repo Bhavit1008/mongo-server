@@ -2,6 +2,7 @@ package com.backend.server.controller;
 
 import com.backend.server.model.ApprovalRequest;
 import com.backend.server.repository.ApprovalRequestRepository;
+import com.backend.server.service.PushNotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,9 @@ public class ApprovalController {
     @Autowired
     ApprovalRequestRepository approvalRepo;
 
+    @Autowired
+    PushNotificationService pushService;
+
     // ── Submit a new request (store_manager → admin) ─────────────────────────
 
     @PostMapping("/submit")
@@ -26,7 +30,20 @@ public class ApprovalController {
         request.setRequestedAt(System.currentTimeMillis());
         request.setResolvedAt(null);
         ApprovalRequest saved = approvalRepo.save(request);
+
+        // Push notification to all admin devices
+        String location = extractLocation(saved);
+        String body = saved.getType() + " request has been raised by "
+                + saved.getRequestedBy() + " from " + location;
+        pushService.notifyAdmins("New Approval Request", body, "/approvals");
+
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
+    }
+
+    private String extractLocation(ApprovalRequest req) {
+        if (req.getProductSnapshot() == null) return "Unknown";
+        Object loc = req.getProductSnapshot().get("godownLocation");
+        return loc != null ? loc.toString() : "Unknown";
     }
 
     // ── Retrieval ─────────────────────────────────────────────────────────────
