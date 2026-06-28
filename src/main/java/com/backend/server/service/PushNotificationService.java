@@ -5,11 +5,13 @@ import com.backend.server.repository.PushSubscriptionRepository;
 import jakarta.annotation.PostConstruct;
 import nl.martijndwars.webpush.Notification;
 import nl.martijndwars.webpush.PushService;
+import org.apache.http.HttpResponse;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
 import java.security.Security;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -30,15 +32,20 @@ public class PushNotificationService {
 
     @PostConstruct
     public void init() throws Exception {
-        Security.addProvider(new BouncyCastleProvider());
+        if (Security.getProvider("BC") == null) {
+            Security.addProvider(new BouncyCastleProvider());
+        }
         pushService = new PushService(vapidPublicKey, vapidPrivateKey, "mailto:bhavitkanthalia16@gmail.com");
+        System.out.println("[Push] PushService initialised with VAPID keys.");
     }
 
     public void notifyAdmins(String title, String body, String url) {
         List<PushSubscription> adminSubs = subscriptionRepo.findByRole("admin");
+        System.out.println("[Push] notifyAdmins called — " + adminSubs.size() + " admin subscription(s) found.");
         if (adminSubs.isEmpty()) return;
 
         String payload = buildPayload(title, body, url);
+        System.out.println("[Push] payload = " + payload);
 
         CompletableFuture.runAsync(() -> {
             for (PushSubscription sub : adminSubs) {
@@ -47,14 +54,29 @@ public class PushNotificationService {
                             sub.getEndpoint(),
                             sub.getP256dh(),
                             sub.getAuth(),
-                            payload.getBytes(java.nio.charset.StandardCharsets.UTF_8)
+                            payload.getBytes(StandardCharsets.UTF_8)
                     );
-                    pushService.send(notification);
+                    HttpResponse response = pushService.send(notification);
+                    int status = response.getStatusLine().getStatusCode();
+                    System.out.println("[Push] Sent to " + sub.getUserId()
+                            + " | endpoint prefix: " + sub.getEndpoint().substring(0, Math.min(50, sub.getEndpoint().length()))
+                            + " | HTTP " + status);
+
+                    // 410 Gone = subscription expired, remove it
+                    if (status == 410) {
+                        subscriptionRepo.deleteByEndpoint(sub.getEndpoint());
+                        System.out.println("[Push] Removed expired subscription for " + sub.getUserId());
+                    }
                 } catch (Exception e) {
-                    System.err.println("[Push] Failed to notify " + sub.getUserId() + ": " + e.getMessage());
+                    System.err.println("[Push] Failed to send to " + sub.getUserId() + ": " + e.getMessage());
+                    e.printStackTrace();
                 }
             }
         });
+    }
+
+    public List<PushSubscription> listAll() {
+        return subscriptionRepo.findAll();
     }
 
     private String buildPayload(String title, String body, String url) {
