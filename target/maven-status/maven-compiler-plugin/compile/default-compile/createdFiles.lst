@@ -8,6 +8,7 @@ com\backend\server\config\Scheduler.class
 com\backend\server\repository\ApprovalRequestRepository.class
 com\backend\server\repository\UserDetailsRepository.class
 com\backend\server\model\Intrasit.class
+com\backend\server\controller\CatalogueController.class
 com\backend\server\service\PushNotificationService.class
 com\backend\server\controller\UserDetailsController.class
 com\backend\server\model\RunningOrder.class
@@ -30,8 +31,10 @@ com\backend\server\controller\PushController.class
 com\backend\server\repository\CompanyRepository.class
 com\backend\server\model\SlabPieces.class
 com\backend\server\model\StockRequestBody.class
+com\backend\server\repository\CatalogueRepository.class
 com\backend\server\controller\StockController.class
 com\backend\server\model\CompanyDetails.class
+com\backend\server\model\CatalogueItem.class
 com\backend\server\model\Stock.class
 com\backend\server\repository\MongoRepository.class
 com\backend\server\service\CloudinaryService.class

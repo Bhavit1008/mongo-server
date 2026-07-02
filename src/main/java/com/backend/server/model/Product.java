@@ -34,7 +34,8 @@ public class Product {
     private String description;
     
     private String imageUrl;
-    
+    private List<String> imageUrls;
+
     private List<SlabPieces> pieces;
 
 	private double totalArea;
@@ -283,6 +284,14 @@ public class Product {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	public List<String> getImageUrls() {
+		return imageUrls;
+	}
+
+	public void setImageUrls(List<String> imageUrls) {
+		this.imageUrls = imageUrls;
 	}
 
 	public double getTotalArea() {
