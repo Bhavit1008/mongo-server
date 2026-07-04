@@ -49,6 +49,9 @@ public class Product {
 
 	private Long createdAt;
 
+	/** Links a Block back to the catalogue (Marble Master) record it was created from. */
+	private String catalogueItemId;
+
 	public Product() {
 	}
 
@@ -310,5 +313,13 @@ public class Product {
 
 	public void setCreatedAt(Long createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public String getCatalogueItemId() {
+		return catalogueItemId;
+	}
+
+	public void setCatalogueItemId(String catalogueItemId) {
+		this.catalogueItemId = catalogueItemId;
 	}
 }
