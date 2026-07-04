@@ -47,6 +47,8 @@ public class Product {
 
 	private double freightQty;
 
+	private Long createdAt;
+
 	public Product() {
 	}
 
@@ -300,5 +302,13 @@ public class Product {
 
 	public void setTotalArea(double totalArea) {
 		this.totalArea = totalArea;
+	}
+
+	public Long getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Long createdAt) {
+		this.createdAt = createdAt;
 	}
 }

@@ -18,10 +18,15 @@ public class CloudinaryService {
 
     /**
      * Upload a MultipartFile (used by the existing /upload-image endpoint).
+     * resource_type "auto" lets Cloudinary accept both images and videos
+     * (needed for the catalogue's quarry video / 360deg media fields).
      */
     public String uploadImage(MultipartFile file) {
         try {
-            Map<?, ?> uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.asMap());
+            Map<?, ?> uploadResult = cloudinary.uploader().upload(
+                    file.getBytes(),
+                    ObjectUtils.asMap("resource_type", "auto")
+            );
             return (String) uploadResult.get("secure_url");
         } catch (IOException e) {
             throw new RuntimeException("Image upload failed", e);

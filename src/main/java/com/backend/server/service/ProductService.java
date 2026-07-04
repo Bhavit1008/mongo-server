@@ -25,7 +25,24 @@ public class ProductService {
      */
     public Product saveProduct(Product product) {
         processSlabPieceImages(product);
+        assignCreatedAt(product);
         return productRepository.save(product);
+    }
+
+    /**
+     * Stamp createdAt once, on first insert, and keep it stable across later
+     * status/detail updates (which re-post the full product via the same
+     * upsert endpoint) so "recently added" ordering reflects creation time,
+     * not last edit time.
+     */
+    private void assignCreatedAt(Product product) {
+        if (product.getCreatedAt() != null) return;
+
+        Long existingCreatedAt = product.getId() != null
+                ? productRepository.findById(product.getId()).map(Product::getCreatedAt).orElse(null)
+                : null;
+
+        product.setCreatedAt(existingCreatedAt != null ? existingCreatedAt : System.currentTimeMillis());
     }
 
     /**

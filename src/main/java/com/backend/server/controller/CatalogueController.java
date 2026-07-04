@@ -18,9 +18,30 @@ public class CatalogueController {
     CatalogueRepository catalogueRepo;
 
     @PostMapping("/add")
-    public ResponseEntity<CatalogueItem> add(@RequestBody CatalogueItem item) {
+    public ResponseEntity<?> add(@RequestBody CatalogueItem item) {
+        String error = validateRequired(item);
+        if (error != null) {
+            return ResponseEntity.badRequest().body(error);
+        }
         item.setCreatedAt(System.currentTimeMillis());
         return new ResponseEntity<>(catalogueRepo.save(item), HttpStatus.CREATED);
+    }
+
+    /**
+     * Mirrors the mandatory (*) fields on the Add Marble form:
+     * Marble Name, Product Code, Material Type, Stone Family, Country.
+     */
+    private String validateRequired(CatalogueItem item) {
+        if (isBlank(item.getMarbleName()))   return "Marble Name is required";
+        if (isBlank(item.getItemCode()))     return "Product Code is required";
+        if (isBlank(item.getMaterialType())) return "Material Type is required";
+        if (isBlank(item.getStoneFamily()))  return "Stone Family is required";
+        if (isBlank(item.getCountry()))      return "Country is required";
+        return null;
+    }
+
+    private boolean isBlank(String value) {
+        return value == null || value.isBlank();
     }
 
     @GetMapping("/all")
@@ -36,8 +57,12 @@ public class CatalogueController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CatalogueItem> update(@PathVariable String id, @RequestBody CatalogueItem item) {
+    public ResponseEntity<?> update(@PathVariable String id, @RequestBody CatalogueItem item) {
         if (!catalogueRepo.existsById(id)) return ResponseEntity.notFound().build();
+        String error = validateRequired(item);
+        if (error != null) {
+            return ResponseEntity.badRequest().body(error);
+        }
         item.setId(id);
         return ResponseEntity.ok(catalogueRepo.save(item));
     }
@@ -56,8 +81,8 @@ public class CatalogueController {
 
         List<CatalogueItem> all = catalogueRepo.findAll();
         return ResponseEntity.ok(all.stream()
-            .filter(i -> material == null || material.isBlank() || material.equalsIgnoreCase(i.getMaterial()))
-            .filter(i -> origin   == null || origin.isBlank()   || origin.equalsIgnoreCase(i.getOrigin()))
+            .filter(i -> material == null || material.isBlank() || material.equalsIgnoreCase(i.getMaterialType()))
+            .filter(i -> origin   == null || origin.isBlank()   || origin.equalsIgnoreCase(i.getCountry()))
             .toList());
     }
 }
