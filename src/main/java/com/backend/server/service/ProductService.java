@@ -24,9 +24,36 @@ public class ProductService {
      * to Cloudinary and replace imageBase64 with the returned imageUrl.
      */
     public Product saveProduct(Product product) {
+        validateUniqueCode(product);
         processSlabPieceImages(product);
         assignCreatedAt(product);
         return productRepository.save(product);
+    }
+
+    /**
+     * Block Number (productCode, within Blocks) and Slab Number (slabNumber,
+     * within Slabs) must each be unique within their own category — two
+     * blocks can't share a block number, and two slabs can't share a slab
+     * number, but a block and a slab may otherwise reuse the same string.
+     * Blank values are exempt (slabNumber is optional) and a product is
+     * always allowed to keep its own existing code when just being updated.
+     */
+    private void validateUniqueCode(Product product) {
+        if ("Block".equalsIgnoreCase(product.getCategory())) {
+            String code = product.getProductCode();
+            if (code != null && !code.isBlank()
+                    && productRepository.findByCategoryAndProductCode("Block", code).stream()
+                            .anyMatch(p -> !p.getId().equals(product.getId()))) {
+                throw new IllegalArgumentException("Block Number \"" + code + "\" is already in use by another block.");
+            }
+        } else if ("Slab".equalsIgnoreCase(product.getCategory())) {
+            String slabNumber = product.getSlabNumber();
+            if (slabNumber != null && !slabNumber.isBlank()
+                    && productRepository.findByCategoryAndSlabNumber("Slab", slabNumber).stream()
+                            .anyMatch(p -> !p.getId().equals(product.getId()))) {
+                throw new IllegalArgumentException("Slab Number \"" + slabNumber + "\" is already in use by another slab.");
+            }
+        }
     }
 
     /**

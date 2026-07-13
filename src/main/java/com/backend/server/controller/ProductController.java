@@ -71,8 +71,12 @@ public class ProductController {
      */
     @PostMapping("/addProduct")
     public ResponseEntity<?> addOrder(@RequestBody Product product) {
-        Product savedProduct = productService.saveProduct(product);
-        return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
+        try {
+            Product savedProduct = productService.saveProduct(product);
+            return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+        }
     }
 
     @GetMapping("/getAllProducts")
