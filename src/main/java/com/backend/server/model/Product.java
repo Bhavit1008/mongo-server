@@ -12,6 +12,7 @@ public class Product {
     private String id;
 	private String category;
     private String productCode;
+    private String slabNumber;
     private String godownLocation;
     private String productQuality;
     private String productFinished;
@@ -159,6 +160,12 @@ public class Product {
 	}
 	public void setProductCode(String productCode) {
 		this.productCode = productCode;
+	}
+	public String getSlabNumber() {
+		return slabNumber;
+	}
+	public void setSlabNumber(String slabNumber) {
+		this.slabNumber = slabNumber;
 	}
 	public String getGodownLocation() {
 		return godownLocation;
