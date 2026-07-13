@@ -53,6 +53,9 @@ public class Product {
 	/** Links a Block back to the catalogue (Marble Master) record it was created from. */
 	private String catalogueItemId;
 
+	/** Frozen snapshot of the source block's own details, set only on a Slab that was converted from a Block. */
+	private SourceBlockDetails sourceBlock;
+
 	public Product() {
 	}
 
@@ -328,5 +331,13 @@ public class Product {
 
 	public void setCatalogueItemId(String catalogueItemId) {
 		this.catalogueItemId = catalogueItemId;
+	}
+
+	public SourceBlockDetails getSourceBlock() {
+		return sourceBlock;
+	}
+
+	public void setSourceBlock(SourceBlockDetails sourceBlock) {
+		this.sourceBlock = sourceBlock;
 	}
 }

@@ -6,6 +6,7 @@ com\backend\server\repository\UserDetailsRepository.class
 com\backend\server\model\Intrasit.class
 com\backend\server\model\ArchitectDocument.class
 com\backend\server\controller\ArchitectDocumentController.class
+com\backend\server\model\SourceBlockDetails.class
 com\backend\server\controller\BusinessRecordController.class
 com\backend\server\controller\FollowUpTaskController.class
 com\backend\server\model\FollowUpTask.class

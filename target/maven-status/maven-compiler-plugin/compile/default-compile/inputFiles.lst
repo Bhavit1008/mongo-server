@@ -11,6 +11,7 @@ F:\server\src\main\java\com\backend\server\model\Intrasit.java
 F:\server\src\main\java\com\backend\server\service\PushNotificationService.java
 F:\server\src\main\java\com\backend\server\controller\ArchitectController.java
 F:\server\src\main\java\com\backend\server\config\MongoDbSettings.java
+F:\server\src\main\java\com\backend\server\model\SourceBlockDetails.java
 F:\server\src\main\java\com\backend\server\repository\ProductRepository.java
 F:\server\src\main\java\com\backend\server\model\SlabPieces.java
 F:\server\src\main\java\com\backend\server\controller\BusinessRecordController.java
