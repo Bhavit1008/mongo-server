@@ -33,9 +33,18 @@ public class Product {
     
     private String status;
     private String description;
-    
+
+    private double size;
+
     private String imageUrl;
     private List<String> imageUrls;
+
+    /** Captured when a product is marked Sold — who it was sold to. */
+    private String partyName;
+    /** Captured when a product is marked Sold — how many slabs were sold. */
+    private int soldQuantity;
+    /** Captured when a product is marked Sold — the running sqft sold. */
+    private double soldSqft;
 
     private List<SlabPieces> pieces;
 
@@ -339,5 +348,37 @@ public class Product {
 
 	public void setSourceBlock(SourceBlockDetails sourceBlock) {
 		this.sourceBlock = sourceBlock;
+	}
+
+	public double getSize() {
+		return size;
+	}
+
+	public void setSize(double size) {
+		this.size = size;
+	}
+
+	public String getPartyName() {
+		return partyName;
+	}
+
+	public void setPartyName(String partyName) {
+		this.partyName = partyName;
+	}
+
+	public int getSoldQuantity() {
+		return soldQuantity;
+	}
+
+	public void setSoldQuantity(int soldQuantity) {
+		this.soldQuantity = soldQuantity;
+	}
+
+	public double getSoldSqft() {
+		return soldSqft;
+	}
+
+	public void setSoldSqft(double soldSqft) {
+		this.soldSqft = soldSqft;
 	}
 }
