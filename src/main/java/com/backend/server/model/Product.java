@@ -41,10 +41,14 @@ public class Product {
 
     /** Captured when a product is marked Sold — who it was sold to. */
     private String partyName;
-    /** Captured when a product is marked Sold — how many slabs were sold. */
+    /** Captured when a Slab is marked Sold — how many slabs were sold. */
     private int soldQuantity;
-    /** Captured when a product is marked Sold — the running sqft sold. */
+    /** Captured when a Slab is marked Sold — the running sqft sold. */
     private double soldSqft;
+    /** Captured when a Block is marked Sold — the weight sold, in tons. */
+    private double weightSold;
+    /** Captured when a product is marked Sold — the actual date of sale, picked in the Sold form (epoch millis). */
+    private Long soldDate;
 
     private List<SlabPieces> pieces;
 
@@ -380,5 +384,21 @@ public class Product {
 
 	public void setSoldSqft(double soldSqft) {
 		this.soldSqft = soldSqft;
+	}
+
+	public double getWeightSold() {
+		return weightSold;
+	}
+
+	public void setWeightSold(double weightSold) {
+		this.weightSold = weightSold;
+	}
+
+	public Long getSoldDate() {
+		return soldDate;
+	}
+
+	public void setSoldDate(Long soldDate) {
+		this.soldDate = soldDate;
 	}
 }
