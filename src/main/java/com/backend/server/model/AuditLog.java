@@ -31,6 +31,7 @@ public class AuditLog {
 
     private String performedBy;
     private String performedByRole;
+    private String performedByStoreLocation;
     private Long timestamp;
 
     /** Human-readable one-liner, e.g. "Updated Slab MB-666 (2 fields changed)". */
@@ -109,6 +110,14 @@ public class AuditLog {
 
     public void setPerformedByRole(String performedByRole) {
         this.performedByRole = performedByRole;
+    }
+
+    public String getPerformedByStoreLocation() {
+        return performedByStoreLocation;
+    }
+
+    public void setPerformedByStoreLocation(String performedByStoreLocation) {
+        this.performedByStoreLocation = performedByStoreLocation;
     }
 
     public Long getTimestamp() {

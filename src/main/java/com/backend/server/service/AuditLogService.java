@@ -52,6 +52,7 @@ public class AuditLogService {
         if ("UPDATE".equals(action) && changes.isEmpty()) return;
 
         Product reference = after != null ? after : before;
+        Employee performer = resolveEmployee(performedBy);
 
         AuditLog log = new AuditLog();
         log.setAction(action);
@@ -61,7 +62,8 @@ public class AuditLogService {
         log.setProductCode(reference.getProductCode());
         log.setSlabNumber(reference.getSlabNumber());
         log.setPerformedBy(performedBy);
-        log.setPerformedByRole(resolveRole(performedBy));
+        log.setPerformedByRole(performer != null ? performer.getRole() : null);
+        log.setPerformedByStoreLocation(performer != null ? performer.getStoreLocation() : null);
         log.setTimestamp(System.currentTimeMillis());
         log.setChanges(changes);
         log.setSummary(buildSummary(action, reference, changes));
@@ -73,11 +75,16 @@ public class AuditLogService {
         return auditLogRepository.findAllByOrderByTimestampDesc(pageable);
     }
 
-    private String resolveRole(String employeeName) {
+    public void deleteAuditLog(String id) {
+        if (!auditLogRepository.existsById(id)) {
+            throw new IllegalArgumentException("Audit log entry not found: " + id);
+        }
+        auditLogRepository.deleteById(id);
+    }
+
+    private Employee resolveEmployee(String employeeName) {
         if (employeeName == null || employeeName.isBlank()) return null;
-        return employeeRepository.findByEmployeeNameIgnoreCase(employeeName.trim())
-            .map(Employee::getRole)
-            .orElse(null);
+        return employeeRepository.findByEmployeeNameIgnoreCase(employeeName.trim()).orElse(null);
     }
 
     private String displayLabel(Product p) {
