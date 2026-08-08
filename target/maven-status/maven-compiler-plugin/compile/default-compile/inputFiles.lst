@@ -4,6 +4,7 @@ F:\server\src\main\java\com\backend\server\repository\ApprovalRequestRepository.
 F:\server\src\main\java\com\backend\server\controller\PushController.java
 F:\server\src\main\java\com\backend\server\model\LoginDto.java
 F:\server\src\main\java\com\backend\server\repository\StockRepository.java
+F:\server\src\main\java\com\backend\server\model\Employee.java
 F:\server\src\main\java\com\backend\server\controller\CatalogueController.java
 F:\server\src\main\java\com\backend\server\controller\UserDetailsController.java
 F:\server\src\main\java\com\backend\server\model\Sample.java
@@ -44,11 +45,14 @@ F:\server\src\main\java\com\backend\server\repository\SampleRepository.java
 F:\server\src\main\java\com\backend\server\controller\BlockController.java
 F:\server\src\main\java\com\backend\server\model\CompanyDetails.java
 F:\server\src\main\java\com\backend\server\repository\InteractionRepository.java
+F:\server\src\main\java\com\backend\server\config\SecurityBeansConfig.java
 F:\server\src\main\java\com\backend\server\repository\PushSubscriptionRepository.java
 F:\server\src\main\java\com\backend\server\controller\InteractionController.java
 F:\server\src\main\java\com\backend\server\model\Order.java
 F:\server\src\main\java\com\backend\server\controller\FollowUpTaskController.java
 F:\server\src\main\java\com\backend\server\model\ArchitectNote.java
+F:\server\src\main\java\com\backend\server\controller\EmployeeController.java
+F:\server\src\main\java\com\backend\server\repository\EmployeeRepository.java
 F:\server\src\main\java\com\backend\server\repository\MongoRepository.java
 F:\server\src\main\java\com\backend\server\controller\CompanyDetailsController.java
 F:\server\src\main\java\com\backend\server\repository\CompanyRepository.java
@@ -59,6 +63,7 @@ F:\server\src\main\java\com\backend\server\repository\UserDetailsRepository.java
 F:\server\src\main\java\com\backend\server\controller\OrderController.java
 F:\server\src\main\java\com\backend\server\model\ArchitectDocument.java
 F:\server\src\main\java\com\backend\server\service\OrderServiceImpl.java
+F:\server\src\main\java\com\backend\server\service\EmployeeService.java
 F:\server\src\main\java\com\backend\server\controller\ArchitectNoteController.java
 F:\server\src\main\java\com\backend\server\config\Scheduler.java
 F:\server\src\main\java\com\backend\server\controller\StockController.java

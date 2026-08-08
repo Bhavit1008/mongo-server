@@ -59,6 +59,13 @@
 			<version>1.77</version>
 		</dependency>
 
+		<!-- Password hashing only (BCryptPasswordEncoder) — not the full Spring
+		     Security starter, so it doesn't auto-lock down existing endpoints. -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-crypto</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
