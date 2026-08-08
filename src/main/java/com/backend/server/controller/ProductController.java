@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -70,9 +71,11 @@ public class ProductController {
      * to Cloudinary before persisting.
      */
     @PostMapping("/addProduct")
-    public ResponseEntity<?> addOrder(@RequestBody Product product) {
+    public ResponseEntity<?> addOrder(
+            @RequestBody Product product,
+            @RequestHeader(value = "X-Employee-Name", required = false) String performedBy) {
         try {
-            Product savedProduct = productService.saveProduct(product);
+            Product savedProduct = productService.saveProduct(product, performedBy);
             return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
@@ -108,9 +111,11 @@ public class ProductController {
      * (block-level + slab-piece images) from Cloudinary.
      */
     @DeleteMapping("/deleteProduct/{id}")
-    public ResponseEntity<?> deleteProduct(@PathVariable String id) {
+    public ResponseEntity<?> deleteProduct(
+            @PathVariable String id,
+            @RequestHeader(value = "X-Employee-Name", required = false) String performedBy) {
         try {
-            productService.deleteProduct(id);
+            productService.deleteProduct(id, performedBy);
             return ResponseEntity.ok("Product deleted successfully");
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());

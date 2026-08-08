@@ -18,16 +18,40 @@ public class ProductService {
     @Autowired
     private CloudinaryService cloudinaryService;
 
+    @Autowired
+    private AuditLogService auditLogService;
+
     /**
      * Save or update a product.
      * Before persisting, upload any slab-piece images that arrive as base64
      * to Cloudinary and replace imageBase64 with the returned imageUrl.
+     * Every save is recorded to the audit log (CREATE or UPDATE) — this is
+     * the single choke point for all Block/Slab writes (manual edits, status
+     * changes like Sold/Process, approvals), so hooking in here catches all
+     * of them without duplicating the call at every call site.
      */
-    public Product saveProduct(Product product) {
+    public Product saveProduct(Product product, String performedBy) {
         validateUniqueCode(product);
         processSlabPieceImages(product);
-        assignCreatedAt(product);
-        return productRepository.save(product);
+
+        Product existing = product.getId() != null
+                ? productRepository.findById(product.getId()).orElse(null)
+                : null;
+
+        assignCreatedAt(product, existing);
+        Product saved = productRepository.save(product);
+
+        recordAudit(existing == null ? "CREATE" : "UPDATE", existing, saved, performedBy);
+        return saved;
+    }
+
+    /** Audit logging must never block or fail the actual save/delete. */
+    private void recordAudit(String action, Product before, Product after, String performedBy) {
+        try {
+            auditLogService.recordProductChange(action, before, after, performedBy);
+        } catch (Exception e) {
+            System.err.println("Audit logging failed: " + e.getMessage());
+        }
     }
 
     /**
@@ -62,13 +86,10 @@ public class ProductService {
      * upsert endpoint) so "recently added" ordering reflects creation time,
      * not last edit time.
      */
-    private void assignCreatedAt(Product product) {
+    private void assignCreatedAt(Product product, Product existing) {
         if (product.getCreatedAt() != null) return;
 
-        Long existingCreatedAt = product.getId() != null
-                ? productRepository.findById(product.getId()).map(Product::getCreatedAt).orElse(null)
-                : null;
-
+        Long existingCreatedAt = existing != null ? existing.getCreatedAt() : null;
         product.setCreatedAt(existingCreatedAt != null ? existingCreatedAt : System.currentTimeMillis());
     }
 
@@ -76,7 +97,7 @@ public class ProductService {
      * Delete a product by ID.
      * Cleans up the block-level image and every slab-piece image from Cloudinary.
      */
-    public void deleteProduct(String productId) {
+    public void deleteProduct(String productId, String performedBy) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found: " + productId));
 
@@ -95,6 +116,7 @@ public class ProductService {
         }
 
         productRepository.deleteById(productId);
+        recordAudit("DELETE", product, null, performedBy);
     }
 
     /**

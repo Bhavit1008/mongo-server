@@ -105,10 +105,20 @@ public class EmployeeService {
         return employeeRepository.save(existing);
     }
 
-    public void deleteEmployee(String id) {
-        if (!employeeRepository.existsById(id)) {
-            throw new IllegalArgumentException("Employee not found: " + id);
+    /**
+     * requestedBy is the caller's own employeeName (self-reported by the
+     * frontend, same trust model as the rest of this app's client-only
+     * authorization). It exists purely to stop an admin from deleting the
+     * account they're currently logged in as, not as a security boundary.
+     */
+    public void deleteEmployee(String id, String requestedBy) {
+        Employee target = employeeRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Employee not found: " + id));
+
+        if (requestedBy != null && target.getEmployeeName().equalsIgnoreCase(requestedBy.trim())) {
+            throw new IllegalArgumentException("You can't delete the account you're currently logged in as.");
         }
+
         employeeRepository.deleteById(id);
     }
 

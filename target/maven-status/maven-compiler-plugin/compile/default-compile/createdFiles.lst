@@ -11,6 +11,8 @@ com\backend\server\controller\ArchitectDocumentController.class
 com\backend\server\model\SourceBlockDetails.class
 com\backend\server\controller\BusinessRecordController.class
 com\backend\server\controller\FollowUpTaskController.class
+com\backend\server\model\AuditChange.class
+com\backend\server\repository\AuditLogRepository.class
 com\backend\server\model\FollowUpTask.class
 com\backend\server\controller\ArchitectNoteController.class
 com\backend\server\repository\BlockRepository.class
@@ -20,14 +22,17 @@ com\backend\server\controller\SampleController.class
 com\backend\server\controller\CompanyDetailsController.class
 com\backend\server\model\Order.class
 com\backend\server\controller\PushController.class
+com\backend\server\service\AuditLogService.class
 com\backend\server\controller\StockController.class
 com\backend\server\controller\EmployeeController.class
 com\backend\server\service\EmployeeService.class
+com\backend\server\service\AuditLogService$1.class
 com\backend\server\model\BusinessRecord.class
 com\backend\server\model\Sample.class
 com\backend\server\model\Block.class
 com\backend\server\controller\OrderController.class
 com\backend\server\service\OrderService.class
+com\backend\server\controller\AuditLogController.class
 com\backend\server\ServerApplication.class
 com\backend\server\repository\ArchitectRepository.class
 com\backend\server\repository\IntransitRepository.class
@@ -36,6 +41,7 @@ com\backend\server\model\Interaction.class
 com\backend\server\model\Architect.class
 com\backend\server\repository\ApprovalRequestRepository.class
 com\backend\server\repository\ArchitectDocumentRepository.class
+com\backend\server\service\AuditLogService$2.class
 com\backend\server\controller\CatalogueController.class
 com\backend\server\service\PushNotificationService.class
 com\backend\server\controller\UserDetailsController.class
@@ -46,6 +52,7 @@ com\backend\server\model\UserDetails.class
 com\backend\server\repository\ArchitectNoteRepository.class
 com\backend\server\controller\ApprovalController.class
 com\backend\server\model\ApprovalRequest.class
+com\backend\server\model\AuditLog.class
 com\backend\server\config\CloudinaryConfig.class
 com\backend\server\repository\StockRepository.class
 com\backend\server\service\OrderServiceImpl.class
