@@ -16,13 +16,17 @@ F:\server\src\main\java\com\backend\server\model\SourceBlockDetails.java
 F:\server\src\main\java\com\backend\server\repository\ProductRepository.java
 F:\server\src\main\java\com\backend\server\model\SlabPieces.java
 F:\server\src\main\java\com\backend\server\controller\BusinessRecordController.java
+F:\server\src\main\java\com\backend\server\controller\AuditLogController.java
+F:\server\src\main\java\com\backend\server\repository\AuditLogRepository.java
 F:\server\src\main\java\com\backend\server\model\BusinessRecord.java
 F:\server\src\main\java\com\backend\server\repository\ArchitectNoteRepository.java
+F:\server\src\main\java\com\backend\server\model\AuditChange.java
 F:\server\src\main\java\com\backend\server\model\PushSubscription.java
 F:\server\src\main\java\com\backend\server\service\ProductService.java
 F:\server\src\main\java\com\backend\server\model\UserDetails.java
 F:\server\src\main\java\com\backend\server\config\CloudinaryConfig.java
 F:\server\src\main\java\com\backend\server\controller\ProductController.java
+F:\server\src\main\java\com\backend\server\service\AuditLogService.java
 F:\server\src\main\java\com\backend\server\model\SlabDetails.java
 F:\server\src\main\java\com\backend\server\repository\ArchitectRepository.java
 F:\server\src\main\java\com\backend\server\repository\BusinessRecordRepository.java
@@ -41,6 +45,7 @@ F:\server\src\main\java\com\backend\server\controller\ApprovalController.java
 F:\server\src\main\java\com\backend\server\ServerApplication.java
 F:\server\src\main\java\com\backend\server\controller\ArchitectDocumentController.java
 F:\server\src\main\java\com\backend\server\service\OrderService.java
+F:\server\src\main\java\com\backend\server\model\AuditLog.java
 F:\server\src\main\java\com\backend\server\repository\SampleRepository.java
 F:\server\src\main\java\com\backend\server\controller\BlockController.java
 F:\server\src\main\java\com\backend\server\model\CompanyDetails.java
