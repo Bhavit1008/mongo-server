@@ -6,6 +6,7 @@ public class SlabPieces {
     private float width;
     private float lessLength;
     private float lessWidth;
+    private int quantity = 1;
     private float totalArea;
     private boolean editable = true;
     private String remark;
@@ -26,6 +27,9 @@ public class SlabPieces {
 
     public float getLessWidth() { return lessWidth; }
     public void setLessWidth(float lessWidth) { this.lessWidth = lessWidth; }
+
+    public int getQuantity() { return quantity; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
 
     public float getTotalArea() { return totalArea; }
     public void setTotalArea(float totalArea) { this.totalArea = totalArea; }

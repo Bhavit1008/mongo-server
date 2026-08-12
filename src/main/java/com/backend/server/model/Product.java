@@ -36,6 +36,11 @@ public class Product {
 
     private double size;
 
+    /** Piece count from the SLAB ENTRY GRID specifically — sum of each grid row's own Qty, independent of the top-level quantity. */
+    private int gridQuantity;
+    /** Sqft from the SLAB ENTRY GRID specifically — independent of size, which is driven by SLAB DETAILS' Size L x W x Quantity. */
+    private double gridSqft;
+
     private String imageUrl;
     private List<String> imageUrls;
 
@@ -360,6 +365,22 @@ public class Product {
 
 	public void setSize(double size) {
 		this.size = size;
+	}
+
+	public int getGridQuantity() {
+		return gridQuantity;
+	}
+
+	public void setGridQuantity(int gridQuantity) {
+		this.gridQuantity = gridQuantity;
+	}
+
+	public double getGridSqft() {
+		return gridSqft;
+	}
+
+	public void setGridSqft(double gridSqft) {
+		this.gridSqft = gridSqft;
 	}
 
 	public String getPartyName() {
