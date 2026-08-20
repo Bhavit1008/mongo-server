@@ -13,6 +13,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  copilot-requests: write
 
 jobs:
   fix-dependency-conflicts:
@@ -57,8 +58,6 @@ jobs:
         run: npm install -g @github/copilot
 
       - name: Analyze and fix conflicts with Copilot
-        env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_PAT }}
         run: |
           copilot -p "$(cat <<'PROMPT'
           I just bumped the Maven dependency ${{ inputs.dependency }} to version ${{ inputs.version }} in pom.xml.
