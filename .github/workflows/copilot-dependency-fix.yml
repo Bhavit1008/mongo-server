@@ -59,7 +59,7 @@ jobs:
 
       - name: Analyze and fix conflicts with Copilot
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
         run: |
           copilot -p "$(cat <<'PROMPT'
           I just bumped the Maven dependency ${{ inputs.dependency }} to version ${{ inputs.version }} in pom.xml.
