@@ -6,12 +6,17 @@ public class SlabPieces {
     private float width;
     private float lessLength;
     private float lessWidth;
-    private int quantity = 1;
     private float totalArea;
     private boolean editable = true;
     private String remark;
     private String imageBase64;
     private String imageUrl;
+
+    // Sold-recheck fields — set only when this piece goes through the Sold Slab Details form.
+    private boolean sold = false;
+    private float recheckedLength;
+    private float recheckedWidth;
+    private float recheckedTotalArea;
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -28,9 +33,6 @@ public class SlabPieces {
     public float getLessWidth() { return lessWidth; }
     public void setLessWidth(float lessWidth) { this.lessWidth = lessWidth; }
 
-    public int getQuantity() { return quantity; }
-    public void setQuantity(int quantity) { this.quantity = quantity; }
-
     public float getTotalArea() { return totalArea; }
     public void setTotalArea(float totalArea) { this.totalArea = totalArea; }
 
@@ -45,4 +47,16 @@ public class SlabPieces {
 
     public String getImageUrl() { return imageUrl; }
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+
+    public boolean isSold() { return sold; }
+    public void setSold(boolean sold) { this.sold = sold; }
+
+    public float getRecheckedLength() { return recheckedLength; }
+    public void setRecheckedLength(float recheckedLength) { this.recheckedLength = recheckedLength; }
+
+    public float getRecheckedWidth() { return recheckedWidth; }
+    public void setRecheckedWidth(float recheckedWidth) { this.recheckedWidth = recheckedWidth; }
+
+    public float getRecheckedTotalArea() { return recheckedTotalArea; }
+    public void setRecheckedTotalArea(float recheckedTotalArea) { this.recheckedTotalArea = recheckedTotalArea; }
 }
