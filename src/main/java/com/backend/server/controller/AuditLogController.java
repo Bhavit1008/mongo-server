@@ -32,6 +32,17 @@ public class AuditLogController {
         return ResponseEntity.ok(auditLogService.getAll(pageable));
     }
 
+    /**
+     * Full history for one product — powers the "Added by / Last edited by"
+     * panel on View Product. Unlike the rest of this controller, this one is
+     * NOT admin-gated: both roles can see who added/edited a product and
+     * what changed, they just can't browse the global audit log.
+     */
+    @GetMapping("/audit-logs/entity/{entityId}")
+    public ResponseEntity<java.util.List<AuditLog>> getAuditLogsForEntity(@PathVariable String entityId) {
+        return ResponseEntity.ok(auditLogService.getForEntity(entityId));
+    }
+
     /** Access is gated client-side (admin-only route + admin-only delete button), same as the rest of this app. */
     @DeleteMapping("/audit-logs/{id}")
     public ResponseEntity<?> deleteAuditLog(@PathVariable String id) {

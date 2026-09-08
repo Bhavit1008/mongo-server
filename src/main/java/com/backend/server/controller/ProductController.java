@@ -88,6 +88,18 @@ public class ProductController {
     }
 
     /**
+     * Single product by id — lets View Product re-fetch its data on a hard
+     * refresh, since the page normally receives the product via in-memory
+     * router navigation state, which a refresh discards.
+     */
+    @GetMapping("/products/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable String id) {
+        return productRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    /**
      * Paginated product listing, newest-first, optionally scoped to a category
      * (e.g. "Block" or "Slab"). Powers the Block Inventory / Slab Inventory pages.
      */

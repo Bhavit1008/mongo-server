@@ -75,6 +75,11 @@ public class AuditLogService {
         return auditLogRepository.findAllByOrderByTimestampDesc(pageable);
     }
 
+    /** Full history for one product (oldest first) — who created it and every edit since. */
+    public List<AuditLog> getForEntity(String entityId) {
+        return auditLogRepository.findByEntityIdOrderByTimestampAsc(entityId);
+    }
+
     public void deleteAuditLog(String id) {
         if (!auditLogRepository.existsById(id)) {
             throw new IllegalArgumentException("Audit log entry not found: " + id);
