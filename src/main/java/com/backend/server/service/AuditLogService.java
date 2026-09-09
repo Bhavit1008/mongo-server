@@ -63,7 +63,9 @@ public class AuditLogService {
         log.setSlabNumber(reference.getSlabNumber());
         log.setPerformedBy(performedBy);
         log.setPerformedByRole(performer != null ? performer.getRole() : null);
-        log.setPerformedByStoreLocation(performer != null ? performer.getStoreLocation() : null);
+        log.setPerformedByStoreLocation(performer != null && performer.getStoreLocations() != null
+            ? String.join(", ", performer.getStoreLocations())
+            : null);
         log.setTimestamp(System.currentTimeMillis());
         log.setChanges(changes);
         log.setSummary(buildSummary(action, reference, changes));

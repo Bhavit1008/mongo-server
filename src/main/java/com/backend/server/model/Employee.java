@@ -1,5 +1,7 @@
 package com.backend.server.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,8 +20,8 @@ public class Employee {
 	private String employeeNumber;
 	private String employeeEmail;
 
-	/** One of: Kishangarh, Banswara, Moradabad */
-	private String storeLocation;
+	/** Any of: Kishangarh, Banswara, Moradabad — a store manager can be assigned more than one. */
+	private List<String> storeLocations;
 
 	/** Hashed with BCrypt before being persisted — never returned in a response. */
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -65,12 +67,12 @@ public class Employee {
 		this.employeeEmail = employeeEmail;
 	}
 
-	public String getStoreLocation() {
-		return storeLocation;
+	public List<String> getStoreLocations() {
+		return storeLocations;
 	}
 
-	public void setStoreLocation(String storeLocation) {
-		this.storeLocation = storeLocation;
+	public void setStoreLocations(List<String> storeLocations) {
+		this.storeLocations = storeLocations;
 	}
 
 	public String getPassword() {

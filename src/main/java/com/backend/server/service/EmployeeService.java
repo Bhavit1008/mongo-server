@@ -25,26 +25,26 @@ public class EmployeeService {
      * One-time migration: credentials used to be hardcoded in the frontend
      * (STATIC_USERS in auth.service.ts). Seed them into the Employee
      * collection on first boot so nothing breaks, then the frontend can stop
-     * shipping any credentials at all. storeLocation wasn't tracked for these
+     * shipping any credentials at all. storeLocations wasn't tracked for these
      * legacy accounts, so they default to the head office (Kishangarh).
      */
     @PostConstruct
     public void seedDefaultEmployeesIfEmpty() {
         if (employeeRepository.count() > 0) return;
 
-        seedOne("setu", "password#1", "admin", "Kishangarh");
-        seedOne("bhavit", "password", "admin", "Kishangarh");
-        seedOne("meet", "password", "admin", "Kishangarh");
-        seedOne("store_manager", "password1", "store_manager", "Kishangarh");
-        seedOne("mohan", "password@1", "store_manager", "Kishangarh");
+        seedOne("setu", "password#1", "admin", List.of("Kishangarh"));
+        seedOne("bhavit", "password", "admin", List.of("Kishangarh"));
+        seedOne("meet", "password", "admin", List.of("Kishangarh"));
+        seedOne("store_manager", "password1", "store_manager", List.of("Kishangarh"));
+        seedOne("mohan", "password@1", "store_manager", List.of("Kishangarh"));
     }
 
-    private void seedOne(String employeeName, String rawPassword, String role, String storeLocation) {
+    private void seedOne(String employeeName, String rawPassword, String role, List<String> storeLocations) {
         Employee e = new Employee();
         e.setEmployeeName(employeeName);
         e.setPassword(passwordEncoder.encode(rawPassword));
         e.setRole(role);
-        e.setStoreLocation(storeLocation);
+        e.setStoreLocations(storeLocations);
         e.setCreatedAt(System.currentTimeMillis());
         employeeRepository.save(e);
     }
@@ -96,7 +96,7 @@ public class EmployeeService {
         existing.setEmployeeName(changes.getEmployeeName());
         existing.setEmployeeNumber(changes.getEmployeeNumber());
         existing.setEmployeeEmail(changes.getEmployeeEmail());
-        existing.setStoreLocation(changes.getStoreLocation());
+        existing.setStoreLocations(changes.getStoreLocations());
         existing.setRole(changes.getRole());
         if (changes.getPassword() != null && !changes.getPassword().isBlank()) {
             existing.setPassword(passwordEncoder.encode(changes.getPassword()));
@@ -129,8 +129,8 @@ public class EmployeeService {
         if (!"admin".equals(employee.getRole()) && !"store_manager".equals(employee.getRole())) {
             throw new IllegalArgumentException("Role must be either \"admin\" or \"store_manager\".");
         }
-        if (employee.getStoreLocation() == null || employee.getStoreLocation().isBlank()) {
-            throw new IllegalArgumentException("Store location is required.");
+        if (employee.getStoreLocations() == null || employee.getStoreLocations().isEmpty()) {
+            throw new IllegalArgumentException("At least one store location is required.");
         }
     }
 
