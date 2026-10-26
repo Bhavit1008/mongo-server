@@ -29,12 +29,10 @@ public class CatalogueController {
 
     /**
      * Mirrors the mandatory (*) fields on the Add Marble form:
-     * Marble Name, Product Code, Material Type, Stone Family, Country.
+     * Product Code, Stone Family, Country.
      */
     private String validateRequired(CatalogueItem item) {
-        if (isBlank(item.getMarbleName()))   return "Marble Name is required";
         if (isBlank(item.getItemCode()))     return "Product Code is required";
-        if (isBlank(item.getMaterialType())) return "Material Type is required";
         if (isBlank(item.getStoneFamily()))  return "Stone Family is required";
         if (isBlank(item.getCountry()))      return "Country is required";
         return null;
@@ -76,13 +74,13 @@ public class CatalogueController {
 
     @GetMapping("/filter")
     public ResponseEntity<List<CatalogueItem>> filter(
-            @RequestParam(required = false) String material,
+            @RequestParam(required = false) String stoneFamily,
             @RequestParam(required = false) String origin) {
 
         List<CatalogueItem> all = catalogueRepo.findAll();
         return ResponseEntity.ok(all.stream()
-            .filter(i -> material == null || material.isBlank() || material.equalsIgnoreCase(i.getMaterialType()))
-            .filter(i -> origin   == null || origin.isBlank()   || origin.equalsIgnoreCase(i.getCountry()))
+            .filter(i -> stoneFamily == null || stoneFamily.isBlank() || stoneFamily.equalsIgnoreCase(i.getStoneFamily()))
+            .filter(i -> origin      == null || origin.isBlank()      || origin.equalsIgnoreCase(i.getCountry()))
             .toList());
     }
 }

@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface CatalogueRepository extends MongoRepository<CatalogueItem, String> {
-    List<CatalogueItem> findByMaterialType(String materialType);
+    List<CatalogueItem> findByStoneFamily(String stoneFamily);
     List<CatalogueItem> findByCountry(String country);
     Optional<CatalogueItem> findByItemCode(String itemCode);
 }

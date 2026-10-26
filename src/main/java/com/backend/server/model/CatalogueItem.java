@@ -15,11 +15,9 @@ public class CatalogueItem {
 
     // ── 1. Basic Information ──────────────────────────────────────────
     private String itemCode;           // Product Code * (unique stone code)
-    private String marbleName;         // Marble Name *
     private String collectionName;
     private String alternateTradeName;
     private String skuCode;
-    private String materialType;       // *
     private String stoneFamily;        // *
 
     // ── 2. Origin Details ──────────────────────────────────────────────
@@ -148,9 +146,6 @@ public class CatalogueItem {
     public String getItemCode()                         { return itemCode; }
     public void   setItemCode(String itemCode)          { this.itemCode = itemCode; }
 
-    public String getMarbleName()                       { return marbleName; }
-    public void   setMarbleName(String marbleName)      { this.marbleName = marbleName; }
-
     public String getCollectionName()                   { return collectionName; }
     public void   setCollectionName(String collectionName) { this.collectionName = collectionName; }
 
@@ -159,9 +154,6 @@ public class CatalogueItem {
 
     public String getSkuCode()                          { return skuCode; }
     public void   setSkuCode(String skuCode)            { this.skuCode = skuCode; }
-
-    public String getMaterialType()                     { return materialType; }
-    public void   setMaterialType(String materialType)  { this.materialType = materialType; }
 
     public String getStoneFamily()                      { return stoneFamily; }
     public void   setStoneFamily(String stoneFamily)    { this.stoneFamily = stoneFamily; }
